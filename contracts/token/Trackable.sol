@@ -1,6 +1,6 @@
 pragma solidity ^0.4.20;
 
-import 'zeppelin-solidity/contracts/math/SafeMath.sol';
+import '../SafeMath.sol';
 
 contract Trackable {
   using SafeMath for uint256;
