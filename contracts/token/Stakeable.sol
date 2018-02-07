@@ -1,4 +1,4 @@
-pragma solidity ^0.4.20;
+pragma solidity ^0.4.18;
 
 import './Trackable.sol';
 import './Burnable.sol';
@@ -28,14 +28,14 @@ contract Stakeable is Trackable, Burnable {
    * @dev depositStake deposits a number of tokens with the holder
    *
    */
-  function depositStake(address _holder, uint256 _value) public returns (uint256 stakeID) {
+  function depositStake(address _holder, uint256 _value) public returns (uint256) {
     var stakeID = deposits[msg.sender].length;
-    var tokens = balanceOfAt(_owner, block.number);
-    var staked = totalDeposits(_owner);
+    var tokens = balanceOfAt(_holder, block.number);
+    var staked = totalDeposits(_holder);
 
     require(tokens.sub(staked) >= _value);
 
-    Stake newStake = Stake({
+    var newStake = Stake({
       state: StakeState.Deposited,
       value: _value,
       holder: _holder
@@ -54,7 +54,7 @@ contract Stakeable is Trackable, Burnable {
   function returnStake(address _owner, uint256 stakeID) public returns (bool) {
     //Must be a possible stakeID
     require(deposits[_owner].length > stakeID);
-    Stake theStake = deposits[_owner][stakeID];
+    var theStake = deposits[_owner][stakeID];
 
     //The sender must be the deposit holder of this stake
     //and the stake must be in a deposited state
@@ -71,7 +71,7 @@ contract Stakeable is Trackable, Burnable {
   function destroyStake(address _owner, uint256 stakeID) public returns (bool) {
     //Must be a possible stakeID
     require(deposits[_owner].length > stakeID);
-    Stake theStake = deposits[_owner][stakeID];
+    var theStake = deposits[_owner][stakeID];
 
     //The sender must be the deposit holder of this stake
     //and the stake must be in a deposited state
@@ -96,15 +96,15 @@ contract Stakeable is Trackable, Burnable {
     if(deposits[_owner].length > 0) {
       //nope
       return 0;
-    };
+    }
 
     uint256 staked = 0;
 
     for(uint256 index = 0; index < deposits[_owner].length; index++) {
       var deposit = deposits[_owner][index];
       // only deposited stakes are held up
-      if(deposit.stake == StakeState.Deposited) {
-        staked = balance.add(deposit.value);
+      if(deposit.state == StakeState.Deposited) {
+        staked = staked.add(deposit.value);
       }
     }
 

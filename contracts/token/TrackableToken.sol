@@ -1,7 +1,9 @@
-pragma solidity ^0.4.20;
+pragma solidity ^0.4.18;
 
-import './Trackable.sol';
+import './Stakeable.sol';
+import './Mintable.sol';
 import './Approvable.sol';
+
 
 /**
  * @title Trackable ERC20 token
@@ -11,7 +13,7 @@ import './Approvable.sol';
  * @dev Based on code by Giveth: https://github.com/Giveth/minime/blob/master/contracts/MiniMeToken.sol
  */
 
-contract TrackableToken is Trackable, Approvable, Stakeable, Mintable, Burnable  {
+contract TrackableToken is Approvable, Stakeable, Mintable  {
 
     string public name;
     uint8 public decimals;
