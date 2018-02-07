@@ -47,6 +47,14 @@ contract Stakeable is Trackable, Burnable {
     return stakeID;
   }
 
+  function checkStake(address _owner, uint256 stakeID) public view returns (StakeState, uint256, address) {
+    //Must be a possible stakeID
+    require(deposits[_owner].length > stakeID);
+    var deposit = deposits[_owner][stakeID];
+
+    return (deposit.state, deposit.value, deposit.holder);
+  }
+
   /**
    * @dev returnStake returns a number of tokens from the stake holder
    *
@@ -92,8 +100,9 @@ contract Stakeable is Trackable, Burnable {
    * @return A uint256 specifying the amount of tokens that are staked.
    */
   function totalDeposits(address _owner) public view returns (uint256) {
+
     //Has owner actually deposited before
-    if(deposits[_owner].length > 0) {
+    if(deposits[_owner].length == 0) {
       //nope
       return 0;
     }
@@ -104,7 +113,7 @@ contract Stakeable is Trackable, Burnable {
       var deposit = deposits[_owner][index];
       // only deposited stakes are held up
       if(deposit.state == StakeState.Deposited) {
-        staked = staked.add(deposit.value);
+        staked += deposit.value;
       }
     }
 
