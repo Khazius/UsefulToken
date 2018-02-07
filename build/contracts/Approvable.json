@@ -211,7 +211,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 1187,
+          "SourceUnit": 1230,
           "absolutePath": "/Users/nathan.rempel/ether/lotto/contracts/token/Trackable.sol",
           "file": "./Trackable.sol",
           "scope": 342,
@@ -227,14 +227,14 @@
       {
         "attributes": {
           "contractDependencies": [
-            1186
+            1229
           ],
           "contractKind": "contract",
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
             341,
-            1186
+            1229
           ],
           "name": "Approvable",
           "scope": 342
@@ -251,7 +251,7 @@
                 "attributes": {
                   "contractScope": null,
                   "name": "Trackable",
-                  "referencedDeclaration": 1186,
+                  "referencedDeclaration": 1229,
                   "type": "contract Trackable"
                 },
                 "id": 180,
@@ -601,7 +601,7 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1343,
+                                          "referencedDeclaration": 1387,
                                           "type": "msg",
                                           "value": "msg"
                                         },
@@ -724,7 +724,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1343,
+                                  "referencedDeclaration": 1387,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -1189,7 +1189,7 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1343,
+                                          "referencedDeclaration": 1387,
                                           "type": "msg",
                                           "value": "msg"
                                         },
@@ -1310,7 +1310,7 @@
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 1343,
+                                                  "referencedDeclaration": 1387,
                                                   "type": "msg",
                                                   "value": "msg"
                                                 },
@@ -1443,7 +1443,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1343,
+                                  "referencedDeclaration": 1387,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -1522,7 +1522,7 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1343,
+                                          "referencedDeclaration": 1387,
                                           "type": "msg",
                                           "value": "msg"
                                         },
@@ -1801,7 +1801,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1343,
+                                      "referencedDeclaration": 1387,
                                       "type": "msg",
                                       "value": "msg"
                                     },
@@ -1960,7 +1960,7 @@
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 1343,
+                                                  "referencedDeclaration": 1387,
                                                   "type": "msg",
                                                   "value": "msg"
                                                 },
@@ -2096,7 +2096,7 @@
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 1343,
+                                                  "referencedDeclaration": 1387,
                                                   "type": "msg",
                                                   "value": "msg"
                                                 },
@@ -2285,7 +2285,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1343,
+                                  "referencedDeclaration": 1387,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -2364,7 +2364,7 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1343,
+                                          "referencedDeclaration": 1387,
                                           "type": "msg",
                                           "value": "msg"
                                         },
@@ -2464,5 +2464,5 @@
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-02-07T03:29:31.758Z"
+  "updatedAt": "2018-02-07T04:14:35.491Z"
 }

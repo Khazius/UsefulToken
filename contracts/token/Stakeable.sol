@@ -25,6 +25,18 @@ contract Stakeable is Trackable, Burnable {
   mapping (address => Stake[]) deposits;
 
   /**
+   * @dev Burns a specific amount of tokens - override so we dont burn staked coins
+   * @param _value The amount of token to be burned.
+   */
+  function burn(uint256 _value) public returns (bool) {
+    var tokens = balanceOfAt(msg.sender, block.number);
+    var staked = totalDeposits(msg.sender);
+
+    require(tokens.sub(staked) >= _value);
+    return super.burn(_value);
+  }
+
+  /**
    * @dev depositStake deposits a number of tokens with the holder
    *
    */
@@ -113,7 +125,7 @@ contract Stakeable is Trackable, Burnable {
       var deposit = deposits[_owner][index];
       // only deposited stakes are held up
       if(deposit.state == StakeState.Deposited) {
-        staked += deposit.value;
+        staked = staked.add(deposit.value);
       }
     }
 

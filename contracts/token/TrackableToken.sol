@@ -52,7 +52,7 @@ contract TrackableToken is Approvable, Stakeable, Mintable  {
     * @return An uint256 representing the amount owned by the passed address.
     */
     function freeBalanceOf(address _owner) public view returns (uint256 balance) {
-      return balanceOfAt(_owner, block.number) - totalDeposits(_owner);
+      return balanceOfAt(_owner, block.number).sub(totalDeposits(_owner));
     }
 
     /**

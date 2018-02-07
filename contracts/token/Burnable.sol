@@ -9,8 +9,9 @@ contract Burnable is Trackable {
    * @dev Burns a specific amount of tokens.
    * @param _value The amount of token to be burned.
    */
-  function burn(uint256 _value) public {
-      doBurn(msg.sender, _value);
+  function burn(uint256 _value) public returns (bool) {
+    doBurn(msg.sender, _value);
+    return true;
   }
 
   function doBurn(address _burner, uint256 _value) internal {

@@ -175,18 +175,22 @@ contract('ActualToken', function(accounts) {
     });
   });
 
-  it("should burn 5 tokens in the second account", function() {
+  it("should fail to burn 5 tokens in the second account", function() {
     var token;
+    var err;
     var account_two = accounts[1];
     var amount = 5;
 
     return Token.deployed().then(function(instance) {
       token = instance;
       return token.burn(amount, {from: account_two});
+    }).catch(function(error) {
+      err = error;
     }).then(function () {
       return token.balanceOf.call(account_two);
     }).then(function(balance) {
-      assert.equal(balance.valueOf(), 0, "0 wasn't in the second account");
+      assert.ok(err instanceof Error,"The burn should have errored");
+      assert.equal(balance.valueOf(), amount, "5 wasn't in the second account");
     });
   });
 });
