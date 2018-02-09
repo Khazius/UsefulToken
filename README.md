@@ -9,7 +9,7 @@ function balanceOfAt(address _holder, uint _blockNumber) constant returns (uint)
 ```
 While this may add some overhead to the token the intent is to allow functionality such as dividends, votes, and anything else imaginable that requires a token balance at a point in time without the usual draw backs such as modifying the token contract itself or restricting transfers.
 ### The token is Burnable
-Anyone can burn their tokens at any time if they want to
+Anyone can burn their tokens at any time if they want to with this function
 ```
 function burn(uint256 _value) public returns (bool)
 ```
@@ -18,7 +18,7 @@ UsefulToken allows a token owner to deposit (or stake) a number of tokens to ano
 
 Staking UsefulToken tokens is **dangerous**. The address you stake the tokens to has the ultimate power to either return your stake or burn those coins permanently.
 
-To minimize the danger and increase the accountability of staking UsefulTokens several calls are introduced.
+To minimize the danger and increase the accountability of staking UsefulTokens several functions are introduced.
 
 ```
 function submitDeposit(address _holder, uint256 _value) public returns (uint256 id)
