@@ -1,109 +1,192 @@
 pragma solidity ^0.4.18;
 
-import './Trackable.sol';
 import './Burnable.sol';
 
-contract Stakeable is Trackable, Burnable {
-  event DepositStake(address indexed owner, address indexed spender, uint256 value, uint256 id);
-  event ReturnStake(address indexed owner, address indexed spender, uint256 value, uint256 id);
-  event DestroyStake(address indexed owner, address indexed spender, uint256 value, uint256 id);
+/**
+ * @title Stakeable token
+ *
+ * @dev Provide an ability to deposit tokens as a stake without losing access dividends and voting rights
+ * @dev To avoid tokens being permanents in limbo by depositing them with uncooperating contracts/people
+ * we utilize a submit -> accept/reject/cancel workflow. Once accepted the deposit may be returned/destroyed.
+ */
 
-  enum StakeState { Deposited, Returned, Destroyed }
+contract Stakeable is Burnable {
+  event SubmitDeposit(address indexed owner, address indexed holder, uint256 value, uint256 id);
+  event AcceptDeposit(address indexed owner, address indexed holder, uint256 value, uint256 id);
+  event RejectDeposit(address indexed owner, address indexed holder, uint256 value, uint256 id);
+  event CancelDeposit(address indexed owner, address indexed holder, uint256 value, uint256 id);
+  event ReturnDeposit(address indexed owner, address indexed holder, uint256 value, uint256 id);
+  event DestroyDeposit(address indexed owner, address indexed holder, uint256 value, uint256 id);
 
-  /// @dev `Stake` is the structure that attaches a state to a
+  enum DepositState { Submitted, Staked, Cancelled, Rejected, Returned, Destroyed }
+
+  /// @dev `Deposit` is the structure that attaches a state to a
   ///  given value of stake
-  struct Stake {
-      // `fromBlock` is the block number that the value was generated from
-      StakeState state;
-      // `value` is the amount of tokens at a specific block number
-      uint256 value;
-      // `holder` is the address that holds the stake
-      address holder;
+  struct Deposit {
+    // `id` is the id of this deposit
+    uint256 id;
+    // `owner` is the address that submitted the stake
+    address owner;
+    // `holder` is the address that holds the stake
+    address holder;
+    // `state` is the current state of this stake
+    DepositState state;
+    // `value` is the amount of tokens placed as a stake
+    uint256 value;
   }
 
   // `deposits` tracks current stakes that have been deposited
-  mapping (address => Stake[]) deposits;
+  mapping (address => Deposit[]) deposits;
 
   /**
    * @dev Burns a specific amount of tokens - override so we dont burn staked coins
    * @param _value The amount of token to be burned.
+   * @return A bool specifying the burn was successful
    */
   function burn(uint256 _value) public returns (bool) {
-    var tokens = balanceOfAt(msg.sender, block.number);
-    var staked = totalDeposits(msg.sender);
-
-    require(tokens.sub(staked) >= _value);
+    var tokenBalance = balanceOfAt(msg.sender, block.number);
+    var depositBalance = totalDeposits(msg.sender);
+    //free balance must be greater than value to allow a burn
+    require(tokenBalance.sub(depositBalance) >= _value);
+    //proceed with the parent burn
     return super.burn(_value);
   }
 
   /**
-   * @dev depositStake deposits a number of tokens with the holder
-   *
+   * @dev submitDeposit submits a deposit of number of tokens with the holder
+   * pending acceptance by the holder
+   * @param _holder address The address which holds the deposit
+   * @param _value uint256 The value of the deposit
+   * @return A uint256 specifying the ID of the deposit
    */
-  function depositStake(address _holder, uint256 _value) public returns (uint256) {
-    var stakeID = deposits[msg.sender].length;
-    var tokens = balanceOfAt(_holder, block.number);
-    var staked = totalDeposits(_holder);
-
-    require(tokens.sub(staked) >= _value);
-
-    var newStake = Stake({
-      state: StakeState.Deposited,
-      value: _value,
-      holder: _holder
+  function submitDeposit(address _holder, uint256 _value) public returns (uint256) {
+    var depositID = deposits[msg.sender].length;
+    var tokenBalance = balanceOfAt(msg.sender, block.number);
+    var depositBalance = totalDeposits(msg.sender);
+    //free balance must be greater than value to allow a burn
+    require(tokenBalance.sub(depositBalance) >= _value);
+    //build deposit and push to mapping
+    var deposit = Deposit({
+      id: depositID,
+      owner: msg.sender,
+      holder: _holder,
+      state: DepositState.Submitted,
+      value: _value
     });
-
-    deposits[msg.sender].push(newStake);
-
-    DepositStake(msg.sender, _holder, _value, stakeID);
-    return stakeID;
-  }
-
-  function checkStake(address _owner, uint256 stakeID) public view returns (StakeState, uint256, address) {
-    //Must be a possible stakeID
-    require(deposits[_owner].length > stakeID);
-    var deposit = deposits[_owner][stakeID];
-
-    return (deposit.state, deposit.value, deposit.holder);
+    deposits[msg.sender].push(deposit);
+    //fire event
+    SubmitDeposit(deposit.owner, deposit.holder, deposit.value, deposit.id);
+    return depositID;
   }
 
   /**
-   * @dev returnStake returns a number of tokens from the stake holder
-   *
+   * @dev cancelDeposit allows the owner to cancel a submitted deposit
+   * @param _depositID uint256 The ID of the deposit being returned
+   * @return A bool specifying the accept was successful
    */
-  function returnStake(address _owner, uint256 stakeID) public returns (bool) {
-    //Must be a possible stakeID
-    require(deposits[_owner].length > stakeID);
-    var theStake = deposits[_owner][stakeID];
-
-    //The sender must be the deposit holder of this stake
-    //and the stake must be in a deposited state
-    require(theStake.holder == msg.sender && theStake.state == StakeState.Deposited);
-
-    theStake.state = StakeState.Returned;
+  function cancelDeposit(uint256 _depositID) public returns (bool) {
+    //Must be a possible depositID
+    require(deposits[msg.sender].length > _depositID);
+    var deposit = deposits[msg.sender][_depositID];
+    //The sender must be the deposit owner of this stake
+    //and the deposit must be in a valid state
+    require(deposit.owner == msg.sender && deposit.state == DepositState.Submitted);
+    //set state and fire event
+    deposit.state = DepositState.Cancelled;
+    CancelDeposit(deposit.owner, deposit.holder, deposit.value, deposit.id);
     return true;
   }
 
   /**
-   * @dev returnStake returns a number of tokens from the stake holder
-   *
+   * @dev acceptDeposit allows the holder to accept a submitted deposit
+   * @param _owner address The address which owns the funds.
+   * @param _depositID uint256 The ID of the deposit being accepted
+   * @return A bool specifying the accept was successful
    */
-  function destroyStake(address _owner, uint256 stakeID) public returns (bool) {
-    //Must be a possible stakeID
-    require(deposits[_owner].length > stakeID);
-    var theStake = deposits[_owner][stakeID];
-
+  function acceptDeposit(address _owner, uint256 _depositID) public returns (bool) {
+    //Must be a possible depositID
+    require(deposits[_owner].length > _depositID);
+    var deposit = deposits[_owner][_depositID];
     //The sender must be the deposit holder of this stake
-    //and the stake must be in a deposited state
-    //and the stake must not be returned
-    require(theStake.holder == msg.sender
-      && theStake.state == StakeState.Deposited
-      && theStake.state != StakeState.Returned);
-
-    theStake.state = StakeState.Destroyed;
-    //run the burn command here
-    doBurn(_owner,theStake.value);
+    //and the deposit must be in a valid state
+    require(deposit.holder == msg.sender && deposit.state == DepositState.Submitted);
+    //set state and fire event
+    deposit.state = DepositState.Staked;
+    AcceptDeposit(deposit.owner, deposit.holder, deposit.value, deposit.id);
     return true;
+  }
+
+  /**
+   * @dev rejectDeposit allows the holder to reject a submitted deposit
+   * @param _owner address The address which owns the funds.
+   * @param _depositID uint256 The ID of the deposit being rejected
+   * @return A bool specifying the accept was successful
+   */
+  function rejectDeposit(address _owner, uint256 _depositID) public returns (bool) {
+    //Must be a possible depositID
+    require(deposits[_owner].length > _depositID);
+    var deposit = deposits[_owner][_depositID];
+    //The sender must be the deposit holder of this stake
+    //and the deposit must be in a valid state
+    require(deposit.holder == msg.sender && deposit.state == DepositState.Submitted);
+    //set state and fire event
+    deposit.state = DepositState.Rejected;
+    RejectDeposit(deposit.owner, deposit.holder, deposit.value, deposit.id);
+    return true;
+  }
+
+  /**
+   * @dev returnDeposit returns a number of tokens from the stake holder
+   * @param _owner address The address which owns the funds.
+   * @param _depositID uint256 The ID of the deposit being returned
+   * @return A bool specifying the return was successful
+   */
+  function returnDeposit(address _owner, uint256 _depositID) public returns (bool) {
+    //Must be a possible depositID
+    require(deposits[_owner].length > _depositID);
+    var deposit = deposits[_owner][_depositID];
+    //The sender must be the deposit holder of this stake
+    //and the deposit must be in a valid state
+    require(deposit.holder == msg.sender && deposit.state == DepositState.Staked);
+    //set state and fire event
+    deposit.state = DepositState.Returned;
+    ReturnDeposit(deposit.owner, deposit.holder, deposit.value, deposit.id);
+    return true;
+  }
+
+  /**
+   * @dev destroyDeposit destroys a number of tokens by the stake holder
+   * @param _owner address The address which owns the funds.
+   * @param _depositID uint256 The ID of the deposit being destroyed
+   * @return A bool specifying the destroy was successful
+   */
+  function destroyDeposit(address _owner, uint256 _depositID) public returns (bool) {
+    //Must be a possible depositID
+    require(deposits[_owner].length > _depositID);
+    var deposit = deposits[_owner][_depositID];
+    //The sender must be the deposit holder of this stake
+    //and the deposit must be in a valid state
+    require(deposit.holder == msg.sender && deposit.state == DepositState.Staked);
+    //run the internal burn command here
+    doBurn(deposit.owner,deposit.value);
+    //set state and fire event
+    deposit.state = DepositState.Destroyed;
+    DestroyDeposit(deposit.owner, deposit.holder, deposit.value, deposit.id);
+    return true;
+  }
+
+  /**
+   * @dev getDeposit returns the deposit details for a specific deposit
+   * @param _owner address The address which owns the funds.
+   * @param _depositID uint256 The ID of the deposit being destroyed
+   * @return A bool specifying the destroy was successful
+   */
+  function getDeposit(address _owner, uint256 _depositID) public view
+    returns (uint256, address, address, DepositState, uint256) {
+    //Must be a possible stakeID
+    require(deposits[_owner].length > _depositID);
+    var deposit = deposits[_owner][_depositID];
+    return (deposit.id, deposit.owner, deposit.holder, deposit.state, deposit.value);
   }
 
   /**
@@ -112,23 +195,20 @@ contract Stakeable is Trackable, Burnable {
    * @return A uint256 specifying the amount of tokens that are staked.
    */
   function totalDeposits(address _owner) public view returns (uint256) {
-
     //Has owner actually deposited before
     if(deposits[_owner].length == 0) {
       //nope
       return 0;
     }
-
-    uint256 staked = 0;
-
+    //get the total deposits made
+    uint256 depositBalance = 0;
     for(uint256 index = 0; index < deposits[_owner].length; index++) {
       var deposit = deposits[_owner][index];
-      // only deposited stakes are held up
-      if(deposit.state == StakeState.Deposited) {
-        staked = staked.add(deposit.value);
+      // only pending and staked deposits are tallied
+      if(deposit.state == DepositState.Staked || deposit.state == DepositState.Submitted) {
+        depositBalance = depositBalance.add(deposit.value);
       }
     }
-
-    return staked;
+    return depositBalance;
   }
 }

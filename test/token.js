@@ -1,7 +1,7 @@
 // Specifically request an abstraction for MetaCoin
-var Token = artifacts.require("ActualToken");
+var Token = artifacts.require("MyToken");
 
-contract('ActualToken', function(accounts) {
+contract('UsefulToken', function(accounts) {
 
   it("should have 0 tokens in the first account", function() {
     return Token.deployed().then(function(instance) {
@@ -73,9 +73,9 @@ contract('ActualToken', function(accounts) {
 
     return Token.deployed().then(function(instance) {
       token = instance;
-      return token.depositStake(account_one, amount, {from: account_two});
+      return token.submitDeposit(account_one, amount, {from: account_two});
     }).then(function () {
-      return token.checkStake.call(account_two,0);
+      return token.getDeposit.call(account_two,0);
     }).then(function(stake) {
       stake_details = stake;
       return token.totalDeposits.call(account_two);
@@ -86,8 +86,8 @@ contract('ActualToken', function(accounts) {
       free_balance_of_two = balance.toNumber();
       return token.balanceOf.call(account_two);
     }).then(function(balance) {
-      assert.equal(stake_details[0].toNumber(), 0, "deposit wasn't in deposited state");
-      assert.equal(stake_details[1].toNumber(), amount, "5 wasn't in the second account total deposits");
+      assert.equal(stake_details[3].toNumber(), 0, "deposit wasn't in submitted state");
+      assert.equal(stake_details[4].toNumber(), amount, "5 wasn't in the deposit");
       assert.equal(stake_details[2], account_one, "holder of deposit matches first account");
       assert.equal(deposits_of_two, amount, "5 wasn't in the second account total deposits");
       assert.equal(free_balance_of_two, amount, "5 wasn't in the second account free balance");

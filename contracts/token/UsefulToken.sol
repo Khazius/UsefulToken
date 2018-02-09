@@ -6,14 +6,14 @@ import './Approvable.sol';
 
 
 /**
- * @title Trackable ERC20 token
+ * @title Useful ERC20 token
  *
  * @dev Implementation of the trackable token.
  * @dev Based on code by OpenZeppelin: https://github.com/OpenZeppelin/zeppelin-solidity
  * @dev Based on code by Giveth: https://github.com/Giveth/minime/blob/master/contracts/MiniMeToken.sol
  */
 
-contract TrackableToken is Approvable, Stakeable, Mintable  {
+contract UsefulToken is Approvable, Stakeable, Mintable  {
 
     string public name;
     uint8 public decimals;
