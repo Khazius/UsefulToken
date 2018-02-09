@@ -1,6 +1,6 @@
 pragma solidity ^0.4.18;
 
-import './UsefulToken.sol';
+import './token/UsefulToken.sol';
 
 
 /**

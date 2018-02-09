@@ -59,7 +59,7 @@ contract Stakeable is Burnable {
    * @param _value uint256 The value of the deposit
    * @return A uint256 specifying the ID of the deposit
    */
-  function submitDeposit(address _holder, uint256 _value) public returns (uint256) {
+  function submitDeposit(address _holder, uint256 _value) public returns (uint256 id) {
     var depositID = deposits[msg.sender].length;
     var tokenBalance = balanceOfAt(msg.sender, block.number);
     var depositBalance = totalDeposits(msg.sender);
