@@ -38,6 +38,17 @@ The owner of the tokens may submit a deposit to a holder. Until the deposit is a
 
 The holder may decide to accept or reject. If they accept the deposit they may finally return the deposit (presumably on some conditions being met) or destroy the deposit, causing the tokens to be burnt.
 
+Three additional calls are provided to get stake based information: the details of a specific deposit id, the total deposits made (submitted or staked) and the owners transferable token balance.
+
+```
+function getDeposit(address _owner, uint256 _depositID) public view
+  returns (uint256, address, address, DepositState, uint256)
+
+function totalDeposits(address _owner) public view returns (uint256)
+
+function freeBalanceOf(address _owner) public view returns (uint256 balance)
+```  
+
 ### Applications
 The goal is that UsefulToken provides a robust platform that can be extended through new contracts. The combination of balance history and staking functionality allow the sky to be the limit of token and contract interactions.
 

@@ -70,7 +70,7 @@ contract Trackable {
     /// @param _owner The address from which the balance will be retrieved
     /// @param _blockNumber The block number when the balance is queried
     /// @return The balance at `_blockNumber`
-    function balanceOfAt(address _owner, uint _blockNumber) public constant
+    function balanceOfAt(address _owner, uint _blockNumber) public view
         returns (uint) {
           return getValueAt(balances[_owner], _blockNumber);
     }
@@ -78,7 +78,7 @@ contract Trackable {
     /// @notice Total amount of tokens at a specific `_blockNumber`.
     /// @param _blockNumber The block number when the totalSupply is queried
     /// @return The total amount of tokens at `_blockNumber`
-    function totalSupplyAt(uint _blockNumber) public constant returns(uint) {
+    function totalSupplyAt(uint _blockNumber) public view returns(uint) {
           return getValueAt(totalSupplyHistory, _blockNumber);
     }
 
@@ -91,7 +91,7 @@ contract Trackable {
     /// @param _block The block number to retrieve the value at
     /// @return The number of tokens being queried
     function getValueAt(Checkpoint[] storage checkpoints, uint _block
-    ) constant internal returns (uint256) {
+    ) view internal returns (uint256) {
         if (checkpoints.length == 0) return 0;
 
         // Shortcut for the actual value
