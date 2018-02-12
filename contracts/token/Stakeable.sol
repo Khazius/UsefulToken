@@ -60,22 +60,19 @@ contract Stakeable is Burnable {
    * @return A uint256 specifying the ID of the deposit
    */
   function submitDeposit(address _holder, uint256 _value) public returns (uint256 id) {
-    var depositID = deposits[msg.sender].length;
+    var depositID = deposits[msg.sender].length++;
     var tokenBalance = balanceOfAt(msg.sender, block.number);
     var depositBalance = totalDeposits(msg.sender);
     //free balance must be greater than value to allow a burn
     require(tokenBalance.sub(depositBalance) >= _value);
     //build deposit and push to mapping
-    var deposit = Deposit({
-      id: depositID,
-      owner: msg.sender,
-      holder: _holder,
-      state: DepositState.Submitted,
-      value: _value
-    });
-    deposits[msg.sender].push(deposit);
-    //fire event
-    SubmitDeposit(deposit.owner, deposit.holder, deposit.value, deposit.id);
+    Deposit storage d = deposits[msg.sender][depositID];
+    d.id = depositID;
+    d.owner = msg.sender;
+    d.holder = _holder;
+    d.state = DepositState.Submitted;
+    d.value = _value;
+    SubmitDeposit(d.owner, d.holder, d.value, d.id);
     return depositID;
   }
 

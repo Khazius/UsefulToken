@@ -1,7 +1,7 @@
 pragma solidity ^0.4.18;
 
 import './Trackable.sol';
-import './Ownable.sol';
+import '../common/Ownable.sol';
 
 contract Mintable is Trackable, Ownable {
   event Mint(address indexed recipient, uint256 value);
