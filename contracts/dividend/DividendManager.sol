@@ -33,9 +33,9 @@ contract DividendManager is Ownable {
   UsefulToken token;
 
   //construct dividend manager with an existing token
-  function DividendManager(address _token, uint256 _threshold, uint256 _daysPerDividend) public {
+  function DividendManager(address _token, uint256 _etherThreshold, uint256 _daysPerDividend) public {
     token = UsefulToken(_token);
-    dividendThreshold = _threshold;
+    dividendThreshold = _etherThreshold * 1 ether;
     dividendTimer = _daysPerDividend * 1 days;
     unclaimedDividends = 0;
   }
@@ -61,15 +61,23 @@ contract DividendManager is Ownable {
 
   //series of helpers to provide unclaimed, claimed, and issued dividends for a given token holder
   function unclaimedFor(address _owner) public view returns (uint256) {
+    //dividend has never been issued before
+    if(dividends.length == 0) {
+      return 0;
+    }
     uint256 lastClaim = claimHistory[_owner];
     uint256 total = 0;
-    for(uint256 index = lastClaim + 1; index < dividends.length - 1; index++) {
+    for(uint256 index = lastClaim; index < dividends.length; index++) {
       total = total.add(issuedFor(_owner,index));
     }
     return total;
   }
 
   function claimedFor(address _owner) public view returns (uint256) {
+    //dividend has never been issued before
+    if(dividends.length == 0) {
+      return 0;
+    }
     uint256 lastClaim = claimHistory[_owner];
     uint256 total = 0;
     for(uint256 index = 0; index < lastClaim; index++) {
@@ -79,26 +87,28 @@ contract DividendManager is Ownable {
   }
 
   function totalIssuedFor(address _owner) public view returns (uint256) {
-    uint256 totalIssued = 0;
-    for(uint256 index = 0; index < dividends.length - 1; index++) {
-      totalIssued = totalIssued.add(issuedFor(_owner,index));
+    //dividend has never been issued before
+    if(dividends.length == 0) {
+      return 0;
     }
-    return totalIssued;
+    uint256 total;
+    for(uint256 index = 0; index < dividends.length; index++) {
+      total = total.add(issuedFor(_owner,index));
+    }
+    return total;
   }
 
   function issuedFor(address _owner, uint256 _dividendID) public view returns (uint256) {
     require(_dividendID < dividends.length);
     var dividend = dividends[_dividendID];
-    var tokensOwned = token.balanceOfAt(_owner,dividend.issuedBlock);
-    var tokensSupply = token.totalSupplyAt(dividend.issuedBlock);
-    return dividend.value.mul(tokensOwned.div(tokensSupply));
+    uint256 tokensOwned = token.balanceOfAt(_owner,dividend.issuedBlock);
+    uint256 tokensSupply = token.totalSupplyAt(dividend.issuedBlock);
+    return tokensOwned.mul(dividend.value).div(tokensSupply);
   }
 
   //anyone can cause a dividend to be issued if the conditions are met
   function issueDividend() public returns (bool) {
-    if(dividendThreshold > unissuedBalance() || now < lastIssuedTime() + dividendTimer) {
-      return false;
-    }
+    require(dividendThreshold <= unissuedBalance() || now >= lastIssuedTime() + dividendTimer);
     doIssue();
     return true;
   }

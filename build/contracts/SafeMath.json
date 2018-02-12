@@ -1,8 +1,8 @@
 {
   "contractName": "SafeMath",
   "abi": [],
-  "bytecode": "0x60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a72305820b9381b0b7219dfbc93b86109e5ed631ab2573a30b8ca69227f4bd868ae818c350029",
-  "deployedBytecode": "0x6060604052600080fd00a165627a7a72305820b9381b0b7219dfbc93b86109e5ed631ab2573a30b8ca69227f4bd868ae818c350029",
+  "bytecode": "0x60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a72305820caef35161bdeb4562f24e8c668ed57f8a9d56b2c4ccc2a9b417f555eb07fff160029",
+  "deployedBytecode": "0x6060604052600080fd00a165627a7a72305820caef35161bdeb4562f24e8c668ed57f8a9d56b2c4ccc2a9b417f555eb07fff160029",
   "sourceMap": "117:712:1:-;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "117:712:1:-;;;;;",
   "source": "pragma solidity ^0.4.18;\n\n\n/**\n * @title SafeMath\n * @dev Math operations with safety checks that throw on error\n */\nlibrary SafeMath {\n  function mul(uint256 a, uint256 b) internal pure returns (uint256) {\n    if (a == 0) {\n      return 0;\n    }\n    uint256 c = a * b;\n    assert(c / a == b);\n    return c;\n  }\n\n  function div(uint256 a, uint256 b) internal pure returns (uint256) {\n    // assert(b > 0); // Solidity automatically throws when dividing by 0\n    uint256 c = a / b;\n    // assert(a == b * c + a % b); // There is no case in which this doesn't hold\n    return c;\n  }\n\n  function sub(uint256 a, uint256 b) internal pure returns (uint256) {\n    assert(b <= a);\n    return a - b;\n  }\n\n  function add(uint256 a, uint256 b) internal pure returns (uint256) {\n    uint256 c = a + b;\n    assert(c >= a);\n    return c;\n  }\n}\n",
@@ -367,7 +367,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1923,
+                              "referencedDeclaration": 1949,
                               "type": "function (bool) pure",
                               "value": "assert"
                             },
@@ -869,7 +869,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1923,
+                              "referencedDeclaration": 1949,
                               "type": "function (bool) pure",
                               "value": "assert"
                             },
@@ -1227,7 +1227,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1923,
+                              "referencedDeclaration": 1949,
                               "type": "function (bool) pure",
                               "value": "assert"
                             },
@@ -1339,9 +1339,9 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
+    "version": "0.4.19+commit.c4cbbb05.Emscripten.clang"
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-02-12T00:57:17.319Z"
+  "updatedAt": "2018-02-12T04:01:24.411Z"
 }

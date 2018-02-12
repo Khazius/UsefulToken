@@ -2,6 +2,28 @@
   "contractName": "Trackable",
   "abi": [
     {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    },
+    {
       "constant": true,
       "inputs": [
         {
@@ -42,32 +64,10 @@
       "payable": false,
       "stateMutability": "view",
       "type": "function"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "from",
-          "type": "address"
-        },
-        {
-          "indexed": true,
-          "name": "to",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "name": "value",
-          "type": "uint256"
-        }
-      ],
-      "name": "Transfer",
-      "type": "event"
     }
   ],
-  "bytecode": "0x6060604052341561000f57600080fd5b6102ac8061001e6000396000f30060606040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680634ee2cd7e14610051578063981b24d0146100a7575b600080fd5b341561005c57600080fd5b610091600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919080359060200190919050506100de565b6040518082815260200191505060405180910390f35b34156100b257600080fd5b6100c8600480803590602001909190505061012f565b6040518082815260200191505060405180910390f35b60006101276000808573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002083610143565b905092915050565b600061013c600183610143565b9050919050565b60008060008060008680549050141561015f5760009350610277565b85600187805490500381548110151561017457fe5b906000526020600020906002020160000154851015156101bc578560018780549050038154811015156101a357fe5b9060005260206000209060020201600101549350610277565b8560008154811015156101cb57fe5b9060005260206000209060020201600001548510156101ed5760009350610277565b60009250600186805490500391505b8282111561025457600260018484010181151561021557fe5b04905084868281548110151561022757fe5b9060005260206000209060020201600001541115156102485780925061024f565b6001810391505b6101fc565b858381548110151561026257fe5b90600052602060002090600202016001015493505b505050929150505600a165627a7a723058203be662c8291a4558b86c2c2bed9b96f4e9c983139d430be67da85780ccbcc1cb0029",
-  "deployedBytecode": "0x60606040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680634ee2cd7e14610051578063981b24d0146100a7575b600080fd5b341561005c57600080fd5b610091600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919080359060200190919050506100de565b6040518082815260200191505060405180910390f35b34156100b257600080fd5b6100c8600480803590602001909190505061012f565b6040518082815260200191505060405180910390f35b60006101276000808573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002083610143565b905092915050565b600061013c600183610143565b9050919050565b60008060008060008680549050141561015f5760009350610277565b85600187805490500381548110151561017457fe5b906000526020600020906002020160000154851015156101bc578560018780549050038154811015156101a357fe5b9060005260206000209060020201600101549350610277565b8560008154811015156101cb57fe5b9060005260206000209060020201600001548510156101ed5760009350610277565b60009250600186805490500391505b8282111561025457600260018484010181151561021557fe5b04905084868281548110151561022757fe5b9060005260206000209060020201600001541115156102485780925061024f565b6001810391505b6101fc565b858381548110151561026257fe5b90600052602060002090600202016001015493505b505050929150505600a165627a7a723058203be662c8291a4558b86c2c2bed9b96f4e9c983139d430be67da85780ccbcc1cb0029",
+  "bytecode": "0x6060604052341561000f57600080fd5b6102ac8061001e6000396000f30060606040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680634ee2cd7e14610051578063981b24d0146100a7575b600080fd5b341561005c57600080fd5b610091600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919080359060200190919050506100de565b6040518082815260200191505060405180910390f35b34156100b257600080fd5b6100c8600480803590602001909190505061012f565b6040518082815260200191505060405180910390f35b60006101276000808573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002083610143565b905092915050565b600061013c600183610143565b9050919050565b60008060008060008680549050141561015f5760009350610277565b85600187805490500381548110151561017457fe5b906000526020600020906002020160000154851015156101bc578560018780549050038154811015156101a357fe5b9060005260206000209060020201600101549350610277565b8560008154811015156101cb57fe5b9060005260206000209060020201600001548510156101ed5760009350610277565b60009250600186805490500391505b8282111561025457600260018484010181151561021557fe5b04905084868281548110151561022757fe5b9060005260206000209060020201600001541115156102485780925061024f565b6001810391505b6101fc565b858381548110151561026257fe5b90600052602060002090600202016001015493505b505050929150505600a165627a7a723058203bb39c4f5c5743b3ece8a28e5cf1bb7f7f0a0a2e778e8463f2522cc9e5302a590029",
+  "deployedBytecode": "0x60606040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680634ee2cd7e14610051578063981b24d0146100a7575b600080fd5b341561005c57600080fd5b610091600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919080359060200190919050506100de565b6040518082815260200191505060405180910390f35b34156100b257600080fd5b6100c8600480803590602001909190505061012f565b6040518082815260200191505060405180910390f35b60006101276000808573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002083610143565b905092915050565b600061013c600183610143565b9050919050565b60008060008060008680549050141561015f5760009350610277565b85600187805490500381548110151561017457fe5b906000526020600020906002020160000154851015156101bc578560018780549050038154811015156101a357fe5b9060005260206000209060020201600101549350610277565b8560008154811015156101cb57fe5b9060005260206000209060020201600001548510156101ed5760009350610277565b60009250600186805490500391505b8282111561025457600260018484010181151561021557fe5b04905084868281548110151561022757fe5b9060005260206000209060020201600001541115156102485780925061024f565b6001810391505b6101fc565b858381548110151561026257fe5b90600052602060002090600202016001015493505b505050929150505600a165627a7a723058203bb39c4f5c5743b3ece8a28e5cf1bb7f7f0a0a2e778e8463f2522cc9e5302a590029",
   "sourceMap": "60:5299:7:-;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "60:5299:7:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2889:159;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3261:138;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2889:159;2974:4;2999:42;3010:8;:16;3019:6;3010:16;;;;;;;;;;;;;;;3028:12;2999:10;:42::i;:::-;2992:49;;2889:159;;;;:::o;3261:138::-;3323:4;3348:44;3359:18;3379:12;3348:10;:44::i;:::-;3341:51;;3261:138;;;:::o;3785:764::-;3880:7;4224:8;4246;4319;3925:1;3903:11;:18;;;;:23;3899:37;;;3935:1;3928:8;;;;3899:37;4002:11;4033:1;4014:11;:18;;;;:20;4002:33;;;;;;;;;;;;;;;;;;;;:43;;;3992:6;:53;;3988:117;;;4066:11;4097:1;4078:11;:18;;;;:20;4066:33;;;;;;;;;;;;;;;;;;;;:39;;;4059:46;;;;3988:117;4128:11;4140:1;4128:14;;;;;;;;;;;;;;;;;;;;:24;;;4119:6;:33;4115:47;;;4161:1;4154:8;;;;4115:47;4235:1;4224:12;;4276:1;4257:11;:18;;;;:20;4246:31;;4287:217;4300:3;4294;:9;4287:217;;;4347:1;4343;4337:3;4331;:9;:13;4330:18;;;;;;;;4319:29;;4394:6;4366:11;4378:3;4366:16;;;;;;;;;;;;;;;;;;;;:26;;;:34;;4362:132;;;4426:3;4420:9;;4362:132;;;4478:1;4474:3;:5;4468:11;;4362:132;4287:217;;;4520:11;4532:3;4520:16;;;;;;;;;;;;;;;;;;;;:22;;;4513:29;;3785:764;;;;;;;;:::o",
   "source": "pragma solidity ^0.4.18;\n\nimport '../common/SafeMath.sol';\n\ncontract Trackable {\n  using SafeMath for uint256;\n  event Transfer(address indexed from, address indexed to, uint256 value);\n\n  /// @dev `Checkpoint` is the structure that attaches a block number to a\n  ///  given value, the block number attached is the one that last changed the\n  ///  value\n  struct  Checkpoint {\n      // `fromBlock` is the block number that the value was generated from\n      uint256 fromBlock;\n      // `value` is the amount of tokens at a specific block number\n      uint256 value;\n  }\n\n  // `balances` is the map that tracks the balance of each address, in this\n  //  contract when the balance changes the block number that the change\n  //  occurred is also included in the map\n  mapping (address => Checkpoint[]) balances;\n\n\n  // Tracks the history of the `totalSupply` of the token\n  Checkpoint[] totalSupplyHistory;\n\n  /// @dev This is the actual transfer function in the token contract, it can\n  ///  only be called by other functions in this contract.\n  /// @param _from The address holding the tokens being transferred\n  /// @param _to The address of the recipient\n  /// @param _amount The amount of tokens to be transferred\n  /// @return True if the transfer was successful\n  function doTransfer(address _from, address _to, uint256 _amount\n  ) internal {\n\n         if (_amount == 0) {\n             Transfer(_from, _to, _amount);    // Follow the spec to louch the event when transfer 0\n             return;\n         }\n\n         // Do not allow transfer to 0x0 or the token contract itself\n         require((_to != 0) && (_to != address(this)));\n\n         // If the amount being transfered is more than the balance of the\n         //  account the transfer throws\n         var previousBalanceFrom = balanceOfAt(_from, block.number);\n\n         require(previousBalanceFrom >= _amount);\n\n         // First update the balance array with the new value for the address\n         //  sending the tokens\n         updateValueAtNow(balances[_from], previousBalanceFrom.sub(_amount));\n\n         // Then update the balance array with the new value for the address\n         //  receiving the tokens\n         var previousBalanceTo = balanceOfAt(_to, block.number);\n         require(previousBalanceTo.add(_amount) >= previousBalanceTo); // Check for overflow\n         updateValueAtNow(balances[_to], previousBalanceTo.add(_amount));\n\n         // An event to make the transfer easy to find on the blockchain\n         Transfer(_from, _to, _amount);\n  }\n\n    ////////////////\n    // Query balance and totalSupply in History\n    ////////////////\n\n    /// @dev Queries the balance of `_owner` at a specific `_blockNumber`\n    /// @param _owner The address from which the balance will be retrieved\n    /// @param _blockNumber The block number when the balance is queried\n    /// @return The balance at `_blockNumber`\n    function balanceOfAt(address _owner, uint _blockNumber) public view\n        returns (uint) {\n          return getValueAt(balances[_owner], _blockNumber);\n    }\n\n    /// @notice Total amount of tokens at a specific `_blockNumber`.\n    /// @param _blockNumber The block number when the totalSupply is queried\n    /// @return The total amount of tokens at `_blockNumber`\n    function totalSupplyAt(uint _blockNumber) public view returns(uint) {\n          return getValueAt(totalSupplyHistory, _blockNumber);\n    }\n\n    ////////////////\n    // Internal helper functions to query and set a value in a snapshot array\n    ////////////////\n\n    /// @dev `getValueAt` retrieves the number of tokens at a given block number\n    /// @param checkpoints The history of values being queried\n    /// @param _block The block number to retrieve the value at\n    /// @return The number of tokens being queried\n    function getValueAt(Checkpoint[] storage checkpoints, uint _block\n    ) view internal returns (uint256) {\n        if (checkpoints.length == 0) return 0;\n\n        // Shortcut for the actual value\n        if (_block >= checkpoints[checkpoints.length-1].fromBlock)\n            return checkpoints[checkpoints.length-1].value;\n        if (_block < checkpoints[0].fromBlock) return 0;\n\n        // Binary search of the value in the array\n        uint min = 0;\n        uint max = checkpoints.length-1;\n        while (max > min) {\n            uint mid = (max + min + 1)/ 2;\n            if (checkpoints[mid].fromBlock<=_block) {\n                min = mid;\n            } else {\n                max = mid-1;\n            }\n        }\n        return checkpoints[min].value;\n    }\n\n    /// @dev `updateValueAtNow` used to update the `balances` map and the\n    ///  `totalSupplyHistory`\n    /// @param checkpoints The history of data being updated\n    /// @param _value The new number of tokens\n    function updateValueAtNow(Checkpoint[] storage checkpoints, uint256 _value\n    ) internal  {\n        if ((checkpoints.length == 0)\n        || (checkpoints[checkpoints.length -1].fromBlock < block.number)) {\n               Checkpoint storage newCheckPoint = checkpoints[ checkpoints.length++ ];\n               newCheckPoint.fromBlock =  uint256(block.number);\n               newCheckPoint.value = uint256(_value);\n           } else {\n               Checkpoint storage oldCheckPoint = checkpoints[checkpoints.length-1];\n               oldCheckPoint.value = uint256(_value);\n           }\n    }\n}\n",
@@ -77,7 +77,7 @@
       "absolutePath": "/Users/nathan.rempel/ether/lotto/contracts/token/Trackable.sol",
       "exportedSymbols": {
         "Trackable": [
-          1774
+          1800
         ]
       }
     },
@@ -91,7 +91,7 @@
             ".18"
           ]
         },
-        "id": 1460,
+        "id": 1486,
         "name": "PragmaDirective",
         "src": "0:24:7"
       },
@@ -100,13 +100,13 @@
           "SourceUnit": 154,
           "absolutePath": "/Users/nathan.rempel/ether/lotto/contracts/common/SafeMath.sol",
           "file": "../common/SafeMath.sol",
-          "scope": 1775,
+          "scope": 1801,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 1461,
+        "id": 1487,
         "name": "ImportDirective",
         "src": "26:32:7"
       },
@@ -122,10 +122,10 @@
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            1774
+            1800
           ],
           "name": "Trackable",
-          "scope": 1775
+          "scope": 1801
         },
         "children": [
           {
@@ -137,7 +137,7 @@
                   "referencedDeclaration": 153,
                   "type": "library SafeMath"
                 },
-                "id": 1462,
+                "id": 1488,
                 "name": "UserDefinedTypeName",
                 "src": "89:8:7"
               },
@@ -146,12 +146,12 @@
                   "name": "uint256",
                   "type": "uint256"
                 },
-                "id": 1463,
+                "id": 1489,
                 "name": "ElementaryTypeName",
                 "src": "102:7:7"
               }
             ],
-            "id": 1464,
+            "id": 1490,
             "name": "UsingForDirective",
             "src": "83:27:7"
           },
@@ -168,7 +168,7 @@
                       "constant": false,
                       "indexed": true,
                       "name": "from",
-                      "scope": 1472,
+                      "scope": 1498,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -181,12 +181,12 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 1465,
+                        "id": 1491,
                         "name": "ElementaryTypeName",
                         "src": "128:7:7"
                       }
                     ],
-                    "id": 1466,
+                    "id": 1492,
                     "name": "VariableDeclaration",
                     "src": "128:20:7"
                   },
@@ -195,7 +195,7 @@
                       "constant": false,
                       "indexed": true,
                       "name": "to",
-                      "scope": 1472,
+                      "scope": 1498,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -208,12 +208,12 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 1467,
+                        "id": 1493,
                         "name": "ElementaryTypeName",
                         "src": "150:7:7"
                       }
                     ],
-                    "id": 1468,
+                    "id": 1494,
                     "name": "VariableDeclaration",
                     "src": "150:18:7"
                   },
@@ -222,7 +222,7 @@
                       "constant": false,
                       "indexed": false,
                       "name": "value",
-                      "scope": 1472,
+                      "scope": 1498,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -235,22 +235,22 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 1469,
+                        "id": 1495,
                         "name": "ElementaryTypeName",
                         "src": "170:7:7"
                       }
                     ],
-                    "id": 1470,
+                    "id": 1496,
                     "name": "VariableDeclaration",
                     "src": "170:13:7"
                   }
                 ],
-                "id": 1471,
+                "id": 1497,
                 "name": "ParameterList",
                 "src": "127:57:7"
               }
             ],
-            "id": 1472,
+            "id": 1498,
             "name": "EventDefinition",
             "src": "113:72:7"
           },
@@ -258,7 +258,7 @@
             "attributes": {
               "canonicalName": "Trackable.Checkpoint",
               "name": "Checkpoint",
-              "scope": 1774,
+              "scope": 1800,
               "visibility": "public"
             },
             "children": [
@@ -266,7 +266,7 @@
                 "attributes": {
                   "constant": false,
                   "name": "fromBlock",
-                  "scope": 1477,
+                  "scope": 1503,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -279,12 +279,12 @@
                       "name": "uint256",
                       "type": "uint256"
                     },
-                    "id": 1473,
+                    "id": 1499,
                     "name": "ElementaryTypeName",
                     "src": "458:7:7"
                   }
                 ],
-                "id": 1474,
+                "id": 1500,
                 "name": "VariableDeclaration",
                 "src": "458:17:7"
               },
@@ -292,7 +292,7 @@
                 "attributes": {
                   "constant": false,
                   "name": "value",
-                  "scope": 1477,
+                  "scope": 1503,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -305,17 +305,17 @@
                       "name": "uint256",
                       "type": "uint256"
                     },
-                    "id": 1475,
+                    "id": 1501,
                     "name": "ElementaryTypeName",
                     "src": "551:7:7"
                   }
                 ],
-                "id": 1476,
+                "id": 1502,
                 "name": "VariableDeclaration",
                 "src": "551:13:7"
               }
             ],
-            "id": 1477,
+            "id": 1503,
             "name": "StructDefinition",
             "src": "356:213:7"
           },
@@ -323,7 +323,7 @@
             "attributes": {
               "constant": false,
               "name": "balances",
-              "scope": 1774,
+              "scope": 1800,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(address => struct Trackable.Checkpoint storage ref[] storage ref)",
@@ -341,7 +341,7 @@
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 1478,
+                    "id": 1504,
                     "name": "ElementaryTypeName",
                     "src": "774:7:7"
                   },
@@ -355,25 +355,25 @@
                         "attributes": {
                           "contractScope": null,
                           "name": "Checkpoint",
-                          "referencedDeclaration": 1477,
+                          "referencedDeclaration": 1503,
                           "type": "struct Trackable.Checkpoint storage pointer"
                         },
-                        "id": 1479,
+                        "id": 1505,
                         "name": "UserDefinedTypeName",
                         "src": "785:10:7"
                       }
                     ],
-                    "id": 1480,
+                    "id": 1506,
                     "name": "ArrayTypeName",
                     "src": "785:12:7"
                   }
                 ],
-                "id": 1481,
+                "id": 1507,
                 "name": "Mapping",
                 "src": "765:33:7"
               }
             ],
-            "id": 1482,
+            "id": 1508,
             "name": "VariableDeclaration",
             "src": "765:42:7"
           },
@@ -381,7 +381,7 @@
             "attributes": {
               "constant": false,
               "name": "totalSupplyHistory",
-              "scope": 1774,
+              "scope": 1800,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "struct Trackable.Checkpoint storage ref[] storage ref",
@@ -399,20 +399,20 @@
                     "attributes": {
                       "contractScope": null,
                       "name": "Checkpoint",
-                      "referencedDeclaration": 1477,
+                      "referencedDeclaration": 1503,
                       "type": "struct Trackable.Checkpoint storage pointer"
                     },
-                    "id": 1483,
+                    "id": 1509,
                     "name": "UserDefinedTypeName",
                     "src": "871:10:7"
                   }
                 ],
-                "id": 1484,
+                "id": 1510,
                 "name": "ArrayTypeName",
                 "src": "871:12:7"
               }
             ],
-            "id": 1485,
+            "id": 1511,
             "name": "VariableDeclaration",
             "src": "871:31:7"
           },
@@ -426,7 +426,7 @@
               ],
               "name": "doTransfer",
               "payable": false,
-              "scope": 1774,
+              "scope": 1800,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -438,7 +438,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_from",
-                      "scope": 1576,
+                      "scope": 1602,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -451,12 +451,12 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 1486,
+                        "id": 1512,
                         "name": "ElementaryTypeName",
                         "src": "1288:7:7"
                       }
                     ],
-                    "id": 1487,
+                    "id": 1513,
                     "name": "VariableDeclaration",
                     "src": "1288:13:7"
                   },
@@ -464,7 +464,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 1576,
+                      "scope": 1602,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -477,12 +477,12 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 1488,
+                        "id": 1514,
                         "name": "ElementaryTypeName",
                         "src": "1303:7:7"
                       }
                     ],
-                    "id": 1489,
+                    "id": 1515,
                     "name": "VariableDeclaration",
                     "src": "1303:11:7"
                   },
@@ -490,7 +490,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_amount",
-                      "scope": 1576,
+                      "scope": 1602,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -503,17 +503,17 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 1490,
+                        "id": 1516,
                         "name": "ElementaryTypeName",
                         "src": "1316:7:7"
                       }
                     ],
-                    "id": 1491,
+                    "id": 1517,
                     "name": "VariableDeclaration",
                     "src": "1316:15:7"
                   }
                 ],
-                "id": 1492,
+                "id": 1518,
                 "name": "ParameterList",
                 "src": "1287:48:7"
               },
@@ -524,7 +524,7 @@
                   ]
                 },
                 "children": [],
-                "id": 1493,
+                "id": 1519,
                 "name": "ParameterList",
                 "src": "1345:0:7"
               },
@@ -556,11 +556,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1491,
+                              "referencedDeclaration": 1517,
                               "type": "uint256",
                               "value": "_amount"
                             },
-                            "id": 1494,
+                            "id": 1520,
                             "name": "Identifier",
                             "src": "1361:7:7"
                           },
@@ -577,12 +577,12 @@
                               "type": "int_const 0",
                               "value": "0"
                             },
-                            "id": 1495,
+                            "id": 1521,
                             "name": "Literal",
                             "src": "1372:1:7"
                           }
                         ],
-                        "id": 1496,
+                        "id": 1522,
                         "name": "BinaryOperation",
                         "src": "1361:12:7"
                       },
@@ -624,11 +624,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1472,
+                                      "referencedDeclaration": 1498,
                                       "type": "function (address,address,uint256)",
                                       "value": "Transfer"
                                     },
-                                    "id": 1497,
+                                    "id": 1523,
                                     "name": "Identifier",
                                     "src": "1390:8:7"
                                   },
@@ -638,11 +638,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1487,
+                                      "referencedDeclaration": 1513,
                                       "type": "address",
                                       "value": "_from"
                                     },
-                                    "id": 1498,
+                                    "id": 1524,
                                     "name": "Identifier",
                                     "src": "1399:5:7"
                                   },
@@ -652,11 +652,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1489,
+                                      "referencedDeclaration": 1515,
                                       "type": "address",
                                       "value": "_to"
                                     },
-                                    "id": 1499,
+                                    "id": 1525,
                                     "name": "Identifier",
                                     "src": "1406:3:7"
                                   },
@@ -666,40 +666,40 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1491,
+                                      "referencedDeclaration": 1517,
                                       "type": "uint256",
                                       "value": "_amount"
                                     },
-                                    "id": 1500,
+                                    "id": 1526,
                                     "name": "Identifier",
                                     "src": "1411:7:7"
                                   }
                                 ],
-                                "id": 1501,
+                                "id": 1527,
                                 "name": "FunctionCall",
                                 "src": "1390:29:7"
                               }
                             ],
-                            "id": 1502,
+                            "id": 1528,
                             "name": "ExpressionStatement",
                             "src": "1390:29:7"
                           },
                           {
                             "attributes": {
                               "expression": null,
-                              "functionReturnParameters": 1493
+                              "functionReturnParameters": 1519
                             },
-                            "id": 1503,
+                            "id": 1529,
                             "name": "Return",
                             "src": "1491:7:7"
                           }
                         ],
-                        "id": 1504,
+                        "id": 1530,
                         "name": "Block",
                         "src": "1375:134:7"
                       }
                     ],
-                    "id": 1505,
+                    "id": 1531,
                     "name": "IfStatement",
                     "src": "1357:152:7"
                   },
@@ -731,11 +731,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1935,
+                              "referencedDeclaration": 1961,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 1506,
+                            "id": 1532,
                             "name": "Identifier",
                             "src": "1590:7:7"
                           },
@@ -786,11 +786,11 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1489,
+                                          "referencedDeclaration": 1515,
                                           "type": "address",
                                           "value": "_to"
                                         },
-                                        "id": 1507,
+                                        "id": 1533,
                                         "name": "Identifier",
                                         "src": "1599:3:7"
                                       },
@@ -807,17 +807,17 @@
                                           "type": "int_const 0",
                                           "value": "0"
                                         },
-                                        "id": 1508,
+                                        "id": 1534,
                                         "name": "Literal",
                                         "src": "1606:1:7"
                                       }
                                     ],
-                                    "id": 1509,
+                                    "id": 1535,
                                     "name": "BinaryOperation",
                                     "src": "1599:8:7"
                                   }
                                 ],
-                                "id": 1510,
+                                "id": 1536,
                                 "name": "TupleExpression",
                                 "src": "1598:10:7"
                               },
@@ -853,11 +853,11 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1489,
+                                          "referencedDeclaration": 1515,
                                           "type": "address",
                                           "value": "_to"
                                         },
-                                        "id": 1511,
+                                        "id": 1537,
                                         "name": "Identifier",
                                         "src": "1613:3:7"
                                       },
@@ -880,7 +880,7 @@
                                             "attributes": {
                                               "argumentTypes": [
                                                 {
-                                                  "typeIdentifier": "t_contract$_Trackable_$1774",
+                                                  "typeIdentifier": "t_contract$_Trackable_$1800",
                                                   "typeString": "contract Trackable"
                                                 }
                                               ],
@@ -891,7 +891,7 @@
                                               "type": "type(address)",
                                               "value": "address"
                                             },
-                                            "id": 1512,
+                                            "id": 1538,
                                             "name": "ElementaryTypeNameExpression",
                                             "src": "1620:7:7"
                                           },
@@ -901,48 +901,48 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1947,
+                                              "referencedDeclaration": 1973,
                                               "type": "contract Trackable",
                                               "value": "this"
                                             },
-                                            "id": 1513,
+                                            "id": 1539,
                                             "name": "Identifier",
                                             "src": "1628:4:7"
                                           }
                                         ],
-                                        "id": 1514,
+                                        "id": 1540,
                                         "name": "FunctionCall",
                                         "src": "1620:13:7"
                                       }
                                     ],
-                                    "id": 1515,
+                                    "id": 1541,
                                     "name": "BinaryOperation",
                                     "src": "1613:20:7"
                                   }
                                 ],
-                                "id": 1516,
+                                "id": 1542,
                                 "name": "TupleExpression",
                                 "src": "1612:22:7"
                               }
                             ],
-                            "id": 1517,
+                            "id": 1543,
                             "name": "BinaryOperation",
                             "src": "1598:36:7"
                           }
                         ],
-                        "id": 1518,
+                        "id": 1544,
                         "name": "FunctionCall",
                         "src": "1590:45:7"
                       }
                     ],
-                    "id": 1519,
+                    "id": 1545,
                     "name": "ExpressionStatement",
                     "src": "1590:45:7"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        1520
+                        1546
                       ]
                     },
                     "children": [
@@ -950,7 +950,7 @@
                         "attributes": {
                           "constant": false,
                           "name": "previousBalanceFrom",
-                          "scope": 1576,
+                          "scope": 1602,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -959,7 +959,7 @@
                           "visibility": "internal"
                         },
                         "children": [],
-                        "id": 1520,
+                        "id": 1546,
                         "name": "VariableDeclaration",
                         "src": "1763:23:7"
                       },
@@ -993,11 +993,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1593,
+                              "referencedDeclaration": 1619,
                               "type": "function (address,uint256) view returns (uint256)",
                               "value": "balanceOfAt"
                             },
-                            "id": 1521,
+                            "id": 1547,
                             "name": "Identifier",
                             "src": "1789:11:7"
                           },
@@ -1007,11 +1007,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1487,
+                              "referencedDeclaration": 1513,
                               "type": "address",
                               "value": "_from"
                             },
-                            "id": 1522,
+                            "id": 1548,
                             "name": "Identifier",
                             "src": "1801:5:7"
                           },
@@ -1033,26 +1033,26 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1924,
+                                  "referencedDeclaration": 1950,
                                   "type": "block",
                                   "value": "block"
                                 },
-                                "id": 1523,
+                                "id": 1549,
                                 "name": "Identifier",
                                 "src": "1808:5:7"
                               }
                             ],
-                            "id": 1524,
+                            "id": 1550,
                             "name": "MemberAccess",
                             "src": "1808:12:7"
                           }
                         ],
-                        "id": 1525,
+                        "id": 1551,
                         "name": "FunctionCall",
                         "src": "1789:32:7"
                       }
                     ],
-                    "id": 1526,
+                    "id": 1552,
                     "name": "VariableDeclarationStatement",
                     "src": "1763:58:7"
                   },
@@ -1084,11 +1084,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1935,
+                              "referencedDeclaration": 1961,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 1527,
+                            "id": 1553,
                             "name": "Identifier",
                             "src": "1833:7:7"
                           },
@@ -1113,11 +1113,11 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1520,
+                                  "referencedDeclaration": 1546,
                                   "type": "uint256",
                                   "value": "previousBalanceFrom"
                                 },
-                                "id": 1528,
+                                "id": 1554,
                                 "name": "Identifier",
                                 "src": "1841:19:7"
                               },
@@ -1127,26 +1127,26 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1491,
+                                  "referencedDeclaration": 1517,
                                   "type": "uint256",
                                   "value": "_amount"
                                 },
-                                "id": 1529,
+                                "id": 1555,
                                 "name": "Identifier",
                                 "src": "1864:7:7"
                               }
                             ],
-                            "id": 1530,
+                            "id": 1556,
                             "name": "BinaryOperation",
                             "src": "1841:30:7"
                           }
                         ],
-                        "id": 1531,
+                        "id": 1557,
                         "name": "FunctionCall",
                         "src": "1833:39:7"
                       }
                     ],
-                    "id": 1532,
+                    "id": 1558,
                     "name": "ExpressionStatement",
                     "src": "1833:39:7"
                   },
@@ -1171,7 +1171,7 @@
                             "attributes": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_array$_t_struct$_Checkpoint_$1477_storage_$dyn_storage",
+                                  "typeIdentifier": "t_array$_t_struct$_Checkpoint_$1503_storage_$dyn_storage",
                                   "typeString": "struct Trackable.Checkpoint storage ref[] storage ref"
                                 },
                                 {
@@ -1182,11 +1182,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1773,
+                              "referencedDeclaration": 1799,
                               "type": "function (struct Trackable.Checkpoint storage ref[] storage pointer,uint256)",
                               "value": "updateValueAtNow"
                             },
-                            "id": 1533,
+                            "id": 1559,
                             "name": "Identifier",
                             "src": "1994:16:7"
                           },
@@ -1206,11 +1206,11 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1482,
+                                  "referencedDeclaration": 1508,
                                   "type": "mapping(address => struct Trackable.Checkpoint storage ref[] storage ref)",
                                   "value": "balances"
                                 },
-                                "id": 1534,
+                                "id": 1560,
                                 "name": "Identifier",
                                 "src": "2011:8:7"
                               },
@@ -1220,16 +1220,16 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1487,
+                                  "referencedDeclaration": 1513,
                                   "type": "address",
                                   "value": "_from"
                                 },
-                                "id": 1535,
+                                "id": 1561,
                                 "name": "Identifier",
                                 "src": "2020:5:7"
                               }
                             ],
-                            "id": 1536,
+                            "id": 1562,
                             "name": "IndexAccess",
                             "src": "2011:15:7"
                           },
@@ -1271,16 +1271,16 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1520,
+                                      "referencedDeclaration": 1546,
                                       "type": "uint256",
                                       "value": "previousBalanceFrom"
                                     },
-                                    "id": 1537,
+                                    "id": 1563,
                                     "name": "Identifier",
                                     "src": "2028:19:7"
                                   }
                                 ],
-                                "id": 1538,
+                                "id": 1564,
                                 "name": "MemberAccess",
                                 "src": "2028:23:7"
                               },
@@ -1290,33 +1290,33 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1491,
+                                  "referencedDeclaration": 1517,
                                   "type": "uint256",
                                   "value": "_amount"
                                 },
-                                "id": 1539,
+                                "id": 1565,
                                 "name": "Identifier",
                                 "src": "2052:7:7"
                               }
                             ],
-                            "id": 1540,
+                            "id": 1566,
                             "name": "FunctionCall",
                             "src": "2028:32:7"
                           }
                         ],
-                        "id": 1541,
+                        "id": 1567,
                         "name": "FunctionCall",
                         "src": "1994:67:7"
                       }
                     ],
-                    "id": 1542,
+                    "id": 1568,
                     "name": "ExpressionStatement",
                     "src": "1994:67:7"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        1543
+                        1569
                       ]
                     },
                     "children": [
@@ -1324,7 +1324,7 @@
                         "attributes": {
                           "constant": false,
                           "name": "previousBalanceTo",
-                          "scope": 1576,
+                          "scope": 1602,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -1333,7 +1333,7 @@
                           "visibility": "internal"
                         },
                         "children": [],
-                        "id": 1543,
+                        "id": 1569,
                         "name": "VariableDeclaration",
                         "src": "2184:21:7"
                       },
@@ -1367,11 +1367,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1593,
+                              "referencedDeclaration": 1619,
                               "type": "function (address,uint256) view returns (uint256)",
                               "value": "balanceOfAt"
                             },
-                            "id": 1544,
+                            "id": 1570,
                             "name": "Identifier",
                             "src": "2208:11:7"
                           },
@@ -1381,11 +1381,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1489,
+                              "referencedDeclaration": 1515,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 1545,
+                            "id": 1571,
                             "name": "Identifier",
                             "src": "2220:3:7"
                           },
@@ -1407,26 +1407,26 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1924,
+                                  "referencedDeclaration": 1950,
                                   "type": "block",
                                   "value": "block"
                                 },
-                                "id": 1546,
+                                "id": 1572,
                                 "name": "Identifier",
                                 "src": "2225:5:7"
                               }
                             ],
-                            "id": 1547,
+                            "id": 1573,
                             "name": "MemberAccess",
                             "src": "2225:12:7"
                           }
                         ],
-                        "id": 1548,
+                        "id": 1574,
                         "name": "FunctionCall",
                         "src": "2208:30:7"
                       }
                     ],
-                    "id": 1549,
+                    "id": 1575,
                     "name": "VariableDeclarationStatement",
                     "src": "2184:54:7"
                   },
@@ -1458,11 +1458,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1935,
+                              "referencedDeclaration": 1961,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 1550,
+                            "id": 1576,
                             "name": "Identifier",
                             "src": "2249:7:7"
                           },
@@ -1519,16 +1519,16 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1543,
+                                          "referencedDeclaration": 1569,
                                           "type": "uint256",
                                           "value": "previousBalanceTo"
                                         },
-                                        "id": 1551,
+                                        "id": 1577,
                                         "name": "Identifier",
                                         "src": "2257:17:7"
                                       }
                                     ],
-                                    "id": 1552,
+                                    "id": 1578,
                                     "name": "MemberAccess",
                                     "src": "2257:21:7"
                                   },
@@ -1538,16 +1538,16 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1491,
+                                      "referencedDeclaration": 1517,
                                       "type": "uint256",
                                       "value": "_amount"
                                     },
-                                    "id": 1553,
+                                    "id": 1579,
                                     "name": "Identifier",
                                     "src": "2279:7:7"
                                   }
                                 ],
-                                "id": 1554,
+                                "id": 1580,
                                 "name": "FunctionCall",
                                 "src": "2257:30:7"
                               },
@@ -1557,26 +1557,26 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1543,
+                                  "referencedDeclaration": 1569,
                                   "type": "uint256",
                                   "value": "previousBalanceTo"
                                 },
-                                "id": 1555,
+                                "id": 1581,
                                 "name": "Identifier",
                                 "src": "2291:17:7"
                               }
                             ],
-                            "id": 1556,
+                            "id": 1582,
                             "name": "BinaryOperation",
                             "src": "2257:51:7"
                           }
                         ],
-                        "id": 1557,
+                        "id": 1583,
                         "name": "FunctionCall",
                         "src": "2249:60:7"
                       }
                     ],
-                    "id": 1558,
+                    "id": 1584,
                     "name": "ExpressionStatement",
                     "src": "2249:60:7"
                   },
@@ -1601,7 +1601,7 @@
                             "attributes": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_array$_t_struct$_Checkpoint_$1477_storage_$dyn_storage",
+                                  "typeIdentifier": "t_array$_t_struct$_Checkpoint_$1503_storage_$dyn_storage",
                                   "typeString": "struct Trackable.Checkpoint storage ref[] storage ref"
                                 },
                                 {
@@ -1612,11 +1612,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1773,
+                              "referencedDeclaration": 1799,
                               "type": "function (struct Trackable.Checkpoint storage ref[] storage pointer,uint256)",
                               "value": "updateValueAtNow"
                             },
-                            "id": 1559,
+                            "id": 1585,
                             "name": "Identifier",
                             "src": "2342:16:7"
                           },
@@ -1636,11 +1636,11 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1482,
+                                  "referencedDeclaration": 1508,
                                   "type": "mapping(address => struct Trackable.Checkpoint storage ref[] storage ref)",
                                   "value": "balances"
                                 },
-                                "id": 1560,
+                                "id": 1586,
                                 "name": "Identifier",
                                 "src": "2359:8:7"
                               },
@@ -1650,16 +1650,16 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1489,
+                                  "referencedDeclaration": 1515,
                                   "type": "address",
                                   "value": "_to"
                                 },
-                                "id": 1561,
+                                "id": 1587,
                                 "name": "Identifier",
                                 "src": "2368:3:7"
                               }
                             ],
-                            "id": 1562,
+                            "id": 1588,
                             "name": "IndexAccess",
                             "src": "2359:13:7"
                           },
@@ -1701,16 +1701,16 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1543,
+                                      "referencedDeclaration": 1569,
                                       "type": "uint256",
                                       "value": "previousBalanceTo"
                                     },
-                                    "id": 1563,
+                                    "id": 1589,
                                     "name": "Identifier",
                                     "src": "2374:17:7"
                                   }
                                 ],
-                                "id": 1564,
+                                "id": 1590,
                                 "name": "MemberAccess",
                                 "src": "2374:21:7"
                               },
@@ -1720,26 +1720,26 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1491,
+                                  "referencedDeclaration": 1517,
                                   "type": "uint256",
                                   "value": "_amount"
                                 },
-                                "id": 1565,
+                                "id": 1591,
                                 "name": "Identifier",
                                 "src": "2396:7:7"
                               }
                             ],
-                            "id": 1566,
+                            "id": 1592,
                             "name": "FunctionCall",
                             "src": "2374:30:7"
                           }
                         ],
-                        "id": 1567,
+                        "id": 1593,
                         "name": "FunctionCall",
                         "src": "2342:63:7"
                       }
                     ],
-                    "id": 1568,
+                    "id": 1594,
                     "name": "ExpressionStatement",
                     "src": "2342:63:7"
                   },
@@ -1779,11 +1779,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1472,
+                              "referencedDeclaration": 1498,
                               "type": "function (address,address,uint256)",
                               "value": "Transfer"
                             },
-                            "id": 1569,
+                            "id": 1595,
                             "name": "Identifier",
                             "src": "2490:8:7"
                           },
@@ -1793,11 +1793,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1487,
+                              "referencedDeclaration": 1513,
                               "type": "address",
                               "value": "_from"
                             },
-                            "id": 1570,
+                            "id": 1596,
                             "name": "Identifier",
                             "src": "2499:5:7"
                           },
@@ -1807,11 +1807,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1489,
+                              "referencedDeclaration": 1515,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 1571,
+                            "id": 1597,
                             "name": "Identifier",
                             "src": "2506:3:7"
                           },
@@ -1821,31 +1821,31 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1491,
+                              "referencedDeclaration": 1517,
                               "type": "uint256",
                               "value": "_amount"
                             },
-                            "id": 1572,
+                            "id": 1598,
                             "name": "Identifier",
                             "src": "2511:7:7"
                           }
                         ],
-                        "id": 1573,
+                        "id": 1599,
                         "name": "FunctionCall",
                         "src": "2490:29:7"
                       }
                     ],
-                    "id": 1574,
+                    "id": 1600,
                     "name": "ExpressionStatement",
                     "src": "2490:29:7"
                   }
                 ],
-                "id": 1575,
+                "id": 1601,
                 "name": "Block",
                 "src": "1345:1179:7"
               }
             ],
-            "id": 1576,
+            "id": 1602,
             "name": "FunctionDefinition",
             "src": "1268:1256:7"
           },
@@ -1859,7 +1859,7 @@
               ],
               "name": "balanceOfAt",
               "payable": false,
-              "scope": 1774,
+              "scope": 1800,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -1871,7 +1871,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_owner",
-                      "scope": 1593,
+                      "scope": 1619,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1884,12 +1884,12 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 1577,
+                        "id": 1603,
                         "name": "ElementaryTypeName",
                         "src": "2910:7:7"
                       }
                     ],
-                    "id": 1578,
+                    "id": 1604,
                     "name": "VariableDeclaration",
                     "src": "2910:14:7"
                   },
@@ -1897,7 +1897,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_blockNumber",
-                      "scope": 1593,
+                      "scope": 1619,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1910,17 +1910,17 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 1579,
+                        "id": 1605,
                         "name": "ElementaryTypeName",
                         "src": "2926:4:7"
                       }
                     ],
-                    "id": 1580,
+                    "id": 1606,
                     "name": "VariableDeclaration",
                     "src": "2926:17:7"
                   }
                 ],
-                "id": 1581,
+                "id": 1607,
                 "name": "ParameterList",
                 "src": "2909:35:7"
               },
@@ -1930,7 +1930,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 1593,
+                      "scope": 1619,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1943,17 +1943,17 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 1582,
+                        "id": 1608,
                         "name": "ElementaryTypeName",
                         "src": "2974:4:7"
                       }
                     ],
-                    "id": 1583,
+                    "id": 1609,
                     "name": "VariableDeclaration",
                     "src": "2974:4:7"
                   }
                 ],
-                "id": 1584,
+                "id": 1610,
                 "name": "ParameterList",
                 "src": "2973:6:7"
               },
@@ -1961,7 +1961,7 @@
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 1584
+                      "functionReturnParameters": 1610
                     },
                     "children": [
                       {
@@ -1983,7 +1983,7 @@
                             "attributes": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_array$_t_struct$_Checkpoint_$1477_storage_$dyn_storage",
+                                  "typeIdentifier": "t_array$_t_struct$_Checkpoint_$1503_storage_$dyn_storage",
                                   "typeString": "struct Trackable.Checkpoint storage ref[] storage ref"
                                 },
                                 {
@@ -1994,11 +1994,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1702,
+                              "referencedDeclaration": 1728,
                               "type": "function (struct Trackable.Checkpoint storage ref[] storage pointer,uint256) view returns (uint256)",
                               "value": "getValueAt"
                             },
-                            "id": 1585,
+                            "id": 1611,
                             "name": "Identifier",
                             "src": "2999:10:7"
                           },
@@ -2018,11 +2018,11 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1482,
+                                  "referencedDeclaration": 1508,
                                   "type": "mapping(address => struct Trackable.Checkpoint storage ref[] storage ref)",
                                   "value": "balances"
                                 },
-                                "id": 1586,
+                                "id": 1612,
                                 "name": "Identifier",
                                 "src": "3010:8:7"
                               },
@@ -2032,16 +2032,16 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1578,
+                                  "referencedDeclaration": 1604,
                                   "type": "address",
                                   "value": "_owner"
                                 },
-                                "id": 1587,
+                                "id": 1613,
                                 "name": "Identifier",
                                 "src": "3019:6:7"
                               }
                             ],
-                            "id": 1588,
+                            "id": 1614,
                             "name": "IndexAccess",
                             "src": "3010:16:7"
                           },
@@ -2051,31 +2051,31 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1580,
+                              "referencedDeclaration": 1606,
                               "type": "uint256",
                               "value": "_blockNumber"
                             },
-                            "id": 1589,
+                            "id": 1615,
                             "name": "Identifier",
                             "src": "3028:12:7"
                           }
                         ],
-                        "id": 1590,
+                        "id": 1616,
                         "name": "FunctionCall",
                         "src": "2999:42:7"
                       }
                     ],
-                    "id": 1591,
+                    "id": 1617,
                     "name": "Return",
                     "src": "2992:49:7"
                   }
                 ],
-                "id": 1592,
+                "id": 1618,
                 "name": "Block",
                 "src": "2980:68:7"
               }
             ],
-            "id": 1593,
+            "id": 1619,
             "name": "FunctionDefinition",
             "src": "2889:159:7"
           },
@@ -2089,7 +2089,7 @@
               ],
               "name": "totalSupplyAt",
               "payable": false,
-              "scope": 1774,
+              "scope": 1800,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -2101,7 +2101,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_blockNumber",
-                      "scope": 1606,
+                      "scope": 1632,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2114,17 +2114,17 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 1594,
+                        "id": 1620,
                         "name": "ElementaryTypeName",
                         "src": "3284:4:7"
                       }
                     ],
-                    "id": 1595,
+                    "id": 1621,
                     "name": "VariableDeclaration",
                     "src": "3284:17:7"
                   }
                 ],
-                "id": 1596,
+                "id": 1622,
                 "name": "ParameterList",
                 "src": "3283:19:7"
               },
@@ -2134,7 +2134,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 1606,
+                      "scope": 1632,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2147,17 +2147,17 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 1597,
+                        "id": 1623,
                         "name": "ElementaryTypeName",
                         "src": "3323:4:7"
                       }
                     ],
-                    "id": 1598,
+                    "id": 1624,
                     "name": "VariableDeclaration",
                     "src": "3323:4:7"
                   }
                 ],
-                "id": 1599,
+                "id": 1625,
                 "name": "ParameterList",
                 "src": "3322:6:7"
               },
@@ -2165,7 +2165,7 @@
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 1599
+                      "functionReturnParameters": 1625
                     },
                     "children": [
                       {
@@ -2187,7 +2187,7 @@
                             "attributes": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_array$_t_struct$_Checkpoint_$1477_storage_$dyn_storage",
+                                  "typeIdentifier": "t_array$_t_struct$_Checkpoint_$1503_storage_$dyn_storage",
                                   "typeString": "struct Trackable.Checkpoint storage ref[] storage ref"
                                 },
                                 {
@@ -2198,11 +2198,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1702,
+                              "referencedDeclaration": 1728,
                               "type": "function (struct Trackable.Checkpoint storage ref[] storage pointer,uint256) view returns (uint256)",
                               "value": "getValueAt"
                             },
-                            "id": 1600,
+                            "id": 1626,
                             "name": "Identifier",
                             "src": "3348:10:7"
                           },
@@ -2212,11 +2212,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1485,
+                              "referencedDeclaration": 1511,
                               "type": "struct Trackable.Checkpoint storage ref[] storage ref",
                               "value": "totalSupplyHistory"
                             },
-                            "id": 1601,
+                            "id": 1627,
                             "name": "Identifier",
                             "src": "3359:18:7"
                           },
@@ -2226,31 +2226,31 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1595,
+                              "referencedDeclaration": 1621,
                               "type": "uint256",
                               "value": "_blockNumber"
                             },
-                            "id": 1602,
+                            "id": 1628,
                             "name": "Identifier",
                             "src": "3379:12:7"
                           }
                         ],
-                        "id": 1603,
+                        "id": 1629,
                         "name": "FunctionCall",
                         "src": "3348:44:7"
                       }
                     ],
-                    "id": 1604,
+                    "id": 1630,
                     "name": "Return",
                     "src": "3341:51:7"
                   }
                 ],
-                "id": 1605,
+                "id": 1631,
                 "name": "Block",
                 "src": "3329:70:7"
               }
             ],
-            "id": 1606,
+            "id": 1632,
             "name": "FunctionDefinition",
             "src": "3261:138:7"
           },
@@ -2264,7 +2264,7 @@
               ],
               "name": "getValueAt",
               "payable": false,
-              "scope": 1774,
+              "scope": 1800,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "internal"
@@ -2276,7 +2276,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "checkpoints",
-                      "scope": 1702,
+                      "scope": 1728,
                       "stateVariable": false,
                       "storageLocation": "storage",
                       "type": "struct Trackable.Checkpoint storage ref[] storage pointer",
@@ -2294,20 +2294,20 @@
                             "attributes": {
                               "contractScope": null,
                               "name": "Checkpoint",
-                              "referencedDeclaration": 1477,
+                              "referencedDeclaration": 1503,
                               "type": "struct Trackable.Checkpoint storage pointer"
                             },
-                            "id": 1607,
+                            "id": 1633,
                             "name": "UserDefinedTypeName",
                             "src": "3805:10:7"
                           }
                         ],
-                        "id": 1608,
+                        "id": 1634,
                         "name": "ArrayTypeName",
                         "src": "3805:12:7"
                       }
                     ],
-                    "id": 1609,
+                    "id": 1635,
                     "name": "VariableDeclaration",
                     "src": "3805:32:7"
                   },
@@ -2315,7 +2315,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_block",
-                      "scope": 1702,
+                      "scope": 1728,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2328,17 +2328,17 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 1610,
+                        "id": 1636,
                         "name": "ElementaryTypeName",
                         "src": "3839:4:7"
                       }
                     ],
-                    "id": 1611,
+                    "id": 1637,
                     "name": "VariableDeclaration",
                     "src": "3839:11:7"
                   }
                 ],
-                "id": 1612,
+                "id": 1638,
                 "name": "ParameterList",
                 "src": "3804:52:7"
               },
@@ -2348,7 +2348,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 1702,
+                      "scope": 1728,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2361,17 +2361,17 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 1613,
+                        "id": 1639,
                         "name": "ElementaryTypeName",
                         "src": "3880:7:7"
                       }
                     ],
-                    "id": 1614,
+                    "id": 1640,
                     "name": "VariableDeclaration",
                     "src": "3880:7:7"
                   }
                 ],
-                "id": 1615,
+                "id": 1641,
                 "name": "ParameterList",
                 "src": "3879:9:7"
               },
@@ -2415,16 +2415,16 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1609,
+                                  "referencedDeclaration": 1635,
                                   "type": "struct Trackable.Checkpoint storage ref[] storage pointer",
                                   "value": "checkpoints"
                                 },
-                                "id": 1616,
+                                "id": 1642,
                                 "name": "Identifier",
                                 "src": "3903:11:7"
                               }
                             ],
-                            "id": 1617,
+                            "id": 1643,
                             "name": "MemberAccess",
                             "src": "3903:18:7"
                           },
@@ -2441,18 +2441,18 @@
                               "type": "int_const 0",
                               "value": "0"
                             },
-                            "id": 1618,
+                            "id": 1644,
                             "name": "Literal",
                             "src": "3925:1:7"
                           }
                         ],
-                        "id": 1619,
+                        "id": 1645,
                         "name": "BinaryOperation",
                         "src": "3903:23:7"
                       },
                       {
                         "attributes": {
-                          "functionReturnParameters": 1615
+                          "functionReturnParameters": 1641
                         },
                         "children": [
                           {
@@ -2468,17 +2468,17 @@
                               "type": "int_const 0",
                               "value": "0"
                             },
-                            "id": 1620,
+                            "id": 1646,
                             "name": "Literal",
                             "src": "3935:1:7"
                           }
                         ],
-                        "id": 1621,
+                        "id": 1647,
                         "name": "Return",
                         "src": "3928:8:7"
                       }
                     ],
-                    "id": 1622,
+                    "id": 1648,
                     "name": "IfStatement",
                     "src": "3899:37:7"
                   },
@@ -2508,11 +2508,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1611,
+                              "referencedDeclaration": 1637,
                               "type": "uint256",
                               "value": "_block"
                             },
-                            "id": 1623,
+                            "id": 1649,
                             "name": "Identifier",
                             "src": "3992:6:7"
                           },
@@ -2524,7 +2524,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "fromBlock",
-                              "referencedDeclaration": 1474,
+                              "referencedDeclaration": 1500,
                               "type": "uint256"
                             },
                             "children": [
@@ -2544,11 +2544,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1609,
+                                      "referencedDeclaration": 1635,
                                       "type": "struct Trackable.Checkpoint storage ref[] storage pointer",
                                       "value": "checkpoints"
                                     },
-                                    "id": 1624,
+                                    "id": 1650,
                                     "name": "Identifier",
                                     "src": "4002:11:7"
                                   },
@@ -2585,16 +2585,16 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1609,
+                                              "referencedDeclaration": 1635,
                                               "type": "struct Trackable.Checkpoint storage ref[] storage pointer",
                                               "value": "checkpoints"
                                             },
-                                            "id": 1625,
+                                            "id": 1651,
                                             "name": "Identifier",
                                             "src": "4014:11:7"
                                           }
                                         ],
-                                        "id": 1626,
+                                        "id": 1652,
                                         "name": "MemberAccess",
                                         "src": "4014:18:7"
                                       },
@@ -2611,33 +2611,33 @@
                                           "type": "int_const 1",
                                           "value": "1"
                                         },
-                                        "id": 1627,
+                                        "id": 1653,
                                         "name": "Literal",
                                         "src": "4033:1:7"
                                       }
                                     ],
-                                    "id": 1628,
+                                    "id": 1654,
                                     "name": "BinaryOperation",
                                     "src": "4014:20:7"
                                   }
                                 ],
-                                "id": 1629,
+                                "id": 1655,
                                 "name": "IndexAccess",
                                 "src": "4002:33:7"
                               }
                             ],
-                            "id": 1630,
+                            "id": 1656,
                             "name": "MemberAccess",
                             "src": "4002:43:7"
                           }
                         ],
-                        "id": 1631,
+                        "id": 1657,
                         "name": "BinaryOperation",
                         "src": "3992:53:7"
                       },
                       {
                         "attributes": {
-                          "functionReturnParameters": 1615
+                          "functionReturnParameters": 1641
                         },
                         "children": [
                           {
@@ -2648,7 +2648,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "value",
-                              "referencedDeclaration": 1476,
+                              "referencedDeclaration": 1502,
                               "type": "uint256"
                             },
                             "children": [
@@ -2668,11 +2668,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1609,
+                                      "referencedDeclaration": 1635,
                                       "type": "struct Trackable.Checkpoint storage ref[] storage pointer",
                                       "value": "checkpoints"
                                     },
-                                    "id": 1632,
+                                    "id": 1658,
                                     "name": "Identifier",
                                     "src": "4066:11:7"
                                   },
@@ -2709,16 +2709,16 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1609,
+                                              "referencedDeclaration": 1635,
                                               "type": "struct Trackable.Checkpoint storage ref[] storage pointer",
                                               "value": "checkpoints"
                                             },
-                                            "id": 1633,
+                                            "id": 1659,
                                             "name": "Identifier",
                                             "src": "4078:11:7"
                                           }
                                         ],
-                                        "id": 1634,
+                                        "id": 1660,
                                         "name": "MemberAccess",
                                         "src": "4078:18:7"
                                       },
@@ -2735,32 +2735,32 @@
                                           "type": "int_const 1",
                                           "value": "1"
                                         },
-                                        "id": 1635,
+                                        "id": 1661,
                                         "name": "Literal",
                                         "src": "4097:1:7"
                                       }
                                     ],
-                                    "id": 1636,
+                                    "id": 1662,
                                     "name": "BinaryOperation",
                                     "src": "4078:20:7"
                                   }
                                 ],
-                                "id": 1637,
+                                "id": 1663,
                                 "name": "IndexAccess",
                                 "src": "4066:33:7"
                               }
                             ],
-                            "id": 1638,
+                            "id": 1664,
                             "name": "MemberAccess",
                             "src": "4066:39:7"
                           }
                         ],
-                        "id": 1639,
+                        "id": 1665,
                         "name": "Return",
                         "src": "4059:46:7"
                       }
                     ],
-                    "id": 1640,
+                    "id": 1666,
                     "name": "IfStatement",
                     "src": "3988:117:7"
                   },
@@ -2790,11 +2790,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1611,
+                              "referencedDeclaration": 1637,
                               "type": "uint256",
                               "value": "_block"
                             },
-                            "id": 1641,
+                            "id": 1667,
                             "name": "Identifier",
                             "src": "4119:6:7"
                           },
@@ -2806,7 +2806,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "fromBlock",
-                              "referencedDeclaration": 1474,
+                              "referencedDeclaration": 1500,
                               "type": "uint256"
                             },
                             "children": [
@@ -2826,11 +2826,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1609,
+                                      "referencedDeclaration": 1635,
                                       "type": "struct Trackable.Checkpoint storage ref[] storage pointer",
                                       "value": "checkpoints"
                                     },
-                                    "id": 1642,
+                                    "id": 1668,
                                     "name": "Identifier",
                                     "src": "4128:11:7"
                                   },
@@ -2847,28 +2847,28 @@
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 1643,
+                                    "id": 1669,
                                     "name": "Literal",
                                     "src": "4140:1:7"
                                   }
                                 ],
-                                "id": 1644,
+                                "id": 1670,
                                 "name": "IndexAccess",
                                 "src": "4128:14:7"
                               }
                             ],
-                            "id": 1645,
+                            "id": 1671,
                             "name": "MemberAccess",
                             "src": "4128:24:7"
                           }
                         ],
-                        "id": 1646,
+                        "id": 1672,
                         "name": "BinaryOperation",
                         "src": "4119:33:7"
                       },
                       {
                         "attributes": {
-                          "functionReturnParameters": 1615
+                          "functionReturnParameters": 1641
                         },
                         "children": [
                           {
@@ -2884,24 +2884,24 @@
                               "type": "int_const 0",
                               "value": "0"
                             },
-                            "id": 1647,
+                            "id": 1673,
                             "name": "Literal",
                             "src": "4161:1:7"
                           }
                         ],
-                        "id": 1648,
+                        "id": 1674,
                         "name": "Return",
                         "src": "4154:8:7"
                       }
                     ],
-                    "id": 1649,
+                    "id": 1675,
                     "name": "IfStatement",
                     "src": "4115:47:7"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        1651
+                        1677
                       ]
                     },
                     "children": [
@@ -2909,7 +2909,7 @@
                         "attributes": {
                           "constant": false,
                           "name": "min",
-                          "scope": 1702,
+                          "scope": 1728,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -2922,12 +2922,12 @@
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 1650,
+                            "id": 1676,
                             "name": "ElementaryTypeName",
                             "src": "4224:4:7"
                           }
                         ],
-                        "id": 1651,
+                        "id": 1677,
                         "name": "VariableDeclaration",
                         "src": "4224:8:7"
                       },
@@ -2944,19 +2944,19 @@
                           "type": "int_const 0",
                           "value": "0"
                         },
-                        "id": 1652,
+                        "id": 1678,
                         "name": "Literal",
                         "src": "4235:1:7"
                       }
                     ],
-                    "id": 1653,
+                    "id": 1679,
                     "name": "VariableDeclarationStatement",
                     "src": "4224:12:7"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        1655
+                        1681
                       ]
                     },
                     "children": [
@@ -2964,7 +2964,7 @@
                         "attributes": {
                           "constant": false,
                           "name": "max",
-                          "scope": 1702,
+                          "scope": 1728,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -2977,12 +2977,12 @@
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 1654,
+                            "id": 1680,
                             "name": "ElementaryTypeName",
                             "src": "4246:4:7"
                           }
                         ],
-                        "id": 1655,
+                        "id": 1681,
                         "name": "VariableDeclaration",
                         "src": "4246:8:7"
                       },
@@ -3019,16 +3019,16 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1609,
+                                  "referencedDeclaration": 1635,
                                   "type": "struct Trackable.Checkpoint storage ref[] storage pointer",
                                   "value": "checkpoints"
                                 },
-                                "id": 1656,
+                                "id": 1682,
                                 "name": "Identifier",
                                 "src": "4257:11:7"
                               }
                             ],
-                            "id": 1657,
+                            "id": 1683,
                             "name": "MemberAccess",
                             "src": "4257:18:7"
                           },
@@ -3045,17 +3045,17 @@
                               "type": "int_const 1",
                               "value": "1"
                             },
-                            "id": 1658,
+                            "id": 1684,
                             "name": "Literal",
                             "src": "4276:1:7"
                           }
                         ],
-                        "id": 1659,
+                        "id": 1685,
                         "name": "BinaryOperation",
                         "src": "4257:20:7"
                       }
                     ],
-                    "id": 1660,
+                    "id": 1686,
                     "name": "VariableDeclarationStatement",
                     "src": "4246:31:7"
                   },
@@ -3082,11 +3082,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1655,
+                              "referencedDeclaration": 1681,
                               "type": "uint256",
                               "value": "max"
                             },
-                            "id": 1661,
+                            "id": 1687,
                             "name": "Identifier",
                             "src": "4294:3:7"
                           },
@@ -3096,16 +3096,16 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1651,
+                              "referencedDeclaration": 1677,
                               "type": "uint256",
                               "value": "min"
                             },
-                            "id": 1662,
+                            "id": 1688,
                             "name": "Identifier",
                             "src": "4300:3:7"
                           }
                         ],
-                        "id": 1663,
+                        "id": 1689,
                         "name": "BinaryOperation",
                         "src": "4294:9:7"
                       },
@@ -3114,7 +3114,7 @@
                           {
                             "attributes": {
                               "assignments": [
-                                1665
+                                1691
                               ]
                             },
                             "children": [
@@ -3122,7 +3122,7 @@
                                 "attributes": {
                                   "constant": false,
                                   "name": "mid",
-                                  "scope": 1702,
+                                  "scope": 1728,
                                   "stateVariable": false,
                                   "storageLocation": "default",
                                   "type": "uint256",
@@ -3135,12 +3135,12 @@
                                       "name": "uint",
                                       "type": "uint256"
                                     },
-                                    "id": 1664,
+                                    "id": 1690,
                                     "name": "ElementaryTypeName",
                                     "src": "4319:4:7"
                                   }
                                 ],
-                                "id": 1665,
+                                "id": 1691,
                                 "name": "VariableDeclaration",
                                 "src": "4319:8:7"
                               },
@@ -3206,11 +3206,11 @@
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 1655,
+                                                  "referencedDeclaration": 1681,
                                                   "type": "uint256",
                                                   "value": "max"
                                                 },
-                                                "id": 1666,
+                                                "id": 1692,
                                                 "name": "Identifier",
                                                 "src": "4331:3:7"
                                               },
@@ -3220,16 +3220,16 @@
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 1651,
+                                                  "referencedDeclaration": 1677,
                                                   "type": "uint256",
                                                   "value": "min"
                                                 },
-                                                "id": 1667,
+                                                "id": 1693,
                                                 "name": "Identifier",
                                                 "src": "4337:3:7"
                                               }
                                             ],
-                                            "id": 1668,
+                                            "id": 1694,
                                             "name": "BinaryOperation",
                                             "src": "4331:9:7"
                                           },
@@ -3246,17 +3246,17 @@
                                               "type": "int_const 1",
                                               "value": "1"
                                             },
-                                            "id": 1669,
+                                            "id": 1695,
                                             "name": "Literal",
                                             "src": "4343:1:7"
                                           }
                                         ],
-                                        "id": 1670,
+                                        "id": 1696,
                                         "name": "BinaryOperation",
                                         "src": "4331:13:7"
                                       }
                                     ],
-                                    "id": 1671,
+                                    "id": 1697,
                                     "name": "TupleExpression",
                                     "src": "4330:15:7"
                                   },
@@ -3273,17 +3273,17 @@
                                       "type": "int_const 2",
                                       "value": "2"
                                     },
-                                    "id": 1672,
+                                    "id": 1698,
                                     "name": "Literal",
                                     "src": "4347:1:7"
                                   }
                                 ],
-                                "id": 1673,
+                                "id": 1699,
                                 "name": "BinaryOperation",
                                 "src": "4330:18:7"
                               }
                             ],
-                            "id": 1674,
+                            "id": 1700,
                             "name": "VariableDeclarationStatement",
                             "src": "4319:29:7"
                           },
@@ -3312,7 +3312,7 @@
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "fromBlock",
-                                      "referencedDeclaration": 1474,
+                                      "referencedDeclaration": 1500,
                                       "type": "uint256"
                                     },
                                     "children": [
@@ -3332,11 +3332,11 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1609,
+                                              "referencedDeclaration": 1635,
                                               "type": "struct Trackable.Checkpoint storage ref[] storage pointer",
                                               "value": "checkpoints"
                                             },
-                                            "id": 1675,
+                                            "id": 1701,
                                             "name": "Identifier",
                                             "src": "4366:11:7"
                                           },
@@ -3346,21 +3346,21 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1665,
+                                              "referencedDeclaration": 1691,
                                               "type": "uint256",
                                               "value": "mid"
                                             },
-                                            "id": 1676,
+                                            "id": 1702,
                                             "name": "Identifier",
                                             "src": "4378:3:7"
                                           }
                                         ],
-                                        "id": 1677,
+                                        "id": 1703,
                                         "name": "IndexAccess",
                                         "src": "4366:16:7"
                                       }
                                     ],
-                                    "id": 1678,
+                                    "id": 1704,
                                     "name": "MemberAccess",
                                     "src": "4366:26:7"
                                   },
@@ -3370,16 +3370,16 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1611,
+                                      "referencedDeclaration": 1637,
                                       "type": "uint256",
                                       "value": "_block"
                                     },
-                                    "id": 1679,
+                                    "id": 1705,
                                     "name": "Identifier",
                                     "src": "4394:6:7"
                                   }
                                 ],
-                                "id": 1680,
+                                "id": 1706,
                                 "name": "BinaryOperation",
                                 "src": "4366:34:7"
                               },
@@ -3404,11 +3404,11 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1651,
+                                              "referencedDeclaration": 1677,
                                               "type": "uint256",
                                               "value": "min"
                                             },
-                                            "id": 1681,
+                                            "id": 1707,
                                             "name": "Identifier",
                                             "src": "4420:3:7"
                                           },
@@ -3418,26 +3418,26 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1665,
+                                              "referencedDeclaration": 1691,
                                               "type": "uint256",
                                               "value": "mid"
                                             },
-                                            "id": 1682,
+                                            "id": 1708,
                                             "name": "Identifier",
                                             "src": "4426:3:7"
                                           }
                                         ],
-                                        "id": 1683,
+                                        "id": 1709,
                                         "name": "Assignment",
                                         "src": "4420:9:7"
                                       }
                                     ],
-                                    "id": 1684,
+                                    "id": 1710,
                                     "name": "ExpressionStatement",
                                     "src": "4420:9:7"
                                   }
                                 ],
-                                "id": 1685,
+                                "id": 1711,
                                 "name": "Block",
                                 "src": "4402:42:7"
                               },
@@ -3462,11 +3462,11 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1655,
+                                              "referencedDeclaration": 1681,
                                               "type": "uint256",
                                               "value": "max"
                                             },
-                                            "id": 1686,
+                                            "id": 1712,
                                             "name": "Identifier",
                                             "src": "4468:3:7"
                                           },
@@ -3491,11 +3491,11 @@
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 1665,
+                                                  "referencedDeclaration": 1691,
                                                   "type": "uint256",
                                                   "value": "mid"
                                                 },
-                                                "id": 1687,
+                                                "id": 1713,
                                                 "name": "Identifier",
                                                 "src": "4474:3:7"
                                               },
@@ -3512,48 +3512,48 @@
                                                   "type": "int_const 1",
                                                   "value": "1"
                                                 },
-                                                "id": 1688,
+                                                "id": 1714,
                                                 "name": "Literal",
                                                 "src": "4478:1:7"
                                               }
                                             ],
-                                            "id": 1689,
+                                            "id": 1715,
                                             "name": "BinaryOperation",
                                             "src": "4474:5:7"
                                           }
                                         ],
-                                        "id": 1690,
+                                        "id": 1716,
                                         "name": "Assignment",
                                         "src": "4468:11:7"
                                       }
                                     ],
-                                    "id": 1691,
+                                    "id": 1717,
                                     "name": "ExpressionStatement",
                                     "src": "4468:11:7"
                                   }
                                 ],
-                                "id": 1692,
+                                "id": 1718,
                                 "name": "Block",
                                 "src": "4450:44:7"
                               }
                             ],
-                            "id": 1693,
+                            "id": 1719,
                             "name": "IfStatement",
                             "src": "4362:132:7"
                           }
                         ],
-                        "id": 1694,
+                        "id": 1720,
                         "name": "Block",
                         "src": "4305:199:7"
                       }
                     ],
-                    "id": 1695,
+                    "id": 1721,
                     "name": "WhileStatement",
                     "src": "4287:217:7"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 1615
+                      "functionReturnParameters": 1641
                     },
                     "children": [
                       {
@@ -3564,7 +3564,7 @@
                           "isPure": false,
                           "lValueRequested": false,
                           "member_name": "value",
-                          "referencedDeclaration": 1476,
+                          "referencedDeclaration": 1502,
                           "type": "uint256"
                         },
                         "children": [
@@ -3584,11 +3584,11 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1609,
+                                  "referencedDeclaration": 1635,
                                   "type": "struct Trackable.Checkpoint storage ref[] storage pointer",
                                   "value": "checkpoints"
                                 },
-                                "id": 1696,
+                                "id": 1722,
                                 "name": "Identifier",
                                 "src": "4520:11:7"
                               },
@@ -3598,36 +3598,36 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1651,
+                                  "referencedDeclaration": 1677,
                                   "type": "uint256",
                                   "value": "min"
                                 },
-                                "id": 1697,
+                                "id": 1723,
                                 "name": "Identifier",
                                 "src": "4532:3:7"
                               }
                             ],
-                            "id": 1698,
+                            "id": 1724,
                             "name": "IndexAccess",
                             "src": "4520:16:7"
                           }
                         ],
-                        "id": 1699,
+                        "id": 1725,
                         "name": "MemberAccess",
                         "src": "4520:22:7"
                       }
                     ],
-                    "id": 1700,
+                    "id": 1726,
                     "name": "Return",
                     "src": "4513:29:7"
                   }
                 ],
-                "id": 1701,
+                "id": 1727,
                 "name": "Block",
                 "src": "3889:660:7"
               }
             ],
-            "id": 1702,
+            "id": 1728,
             "name": "FunctionDefinition",
             "src": "3785:764:7"
           },
@@ -3641,7 +3641,7 @@
               ],
               "name": "updateValueAtNow",
               "payable": false,
-              "scope": 1774,
+              "scope": 1800,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -3653,7 +3653,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "checkpoints",
-                      "scope": 1773,
+                      "scope": 1799,
                       "stateVariable": false,
                       "storageLocation": "storage",
                       "type": "struct Trackable.Checkpoint storage ref[] storage pointer",
@@ -3671,20 +3671,20 @@
                             "attributes": {
                               "contractScope": null,
                               "name": "Checkpoint",
-                              "referencedDeclaration": 1477,
+                              "referencedDeclaration": 1503,
                               "type": "struct Trackable.Checkpoint storage pointer"
                             },
-                            "id": 1703,
+                            "id": 1729,
                             "name": "UserDefinedTypeName",
                             "src": "4793:10:7"
                           }
                         ],
-                        "id": 1704,
+                        "id": 1730,
                         "name": "ArrayTypeName",
                         "src": "4793:12:7"
                       }
                     ],
-                    "id": 1705,
+                    "id": 1731,
                     "name": "VariableDeclaration",
                     "src": "4793:32:7"
                   },
@@ -3692,7 +3692,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_value",
-                      "scope": 1773,
+                      "scope": 1799,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -3705,17 +3705,17 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 1706,
+                        "id": 1732,
                         "name": "ElementaryTypeName",
                         "src": "4827:7:7"
                       }
                     ],
-                    "id": 1707,
+                    "id": 1733,
                     "name": "VariableDeclaration",
                     "src": "4827:14:7"
                   }
                 ],
-                "id": 1708,
+                "id": 1734,
                 "name": "ParameterList",
                 "src": "4792:55:7"
               },
@@ -3726,7 +3726,7 @@
                   ]
                 },
                 "children": [],
-                "id": 1709,
+                "id": 1735,
                 "name": "ParameterList",
                 "src": "4858:0:7"
               },
@@ -3793,16 +3793,16 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1705,
+                                          "referencedDeclaration": 1731,
                                           "type": "struct Trackable.Checkpoint storage ref[] storage pointer",
                                           "value": "checkpoints"
                                         },
-                                        "id": 1710,
+                                        "id": 1736,
                                         "name": "Identifier",
                                         "src": "4873:11:7"
                                       }
                                     ],
-                                    "id": 1711,
+                                    "id": 1737,
                                     "name": "MemberAccess",
                                     "src": "4873:18:7"
                                   },
@@ -3819,17 +3819,17 @@
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 1712,
+                                    "id": 1738,
                                     "name": "Literal",
                                     "src": "4895:1:7"
                                   }
                                 ],
-                                "id": 1713,
+                                "id": 1739,
                                 "name": "BinaryOperation",
                                 "src": "4873:23:7"
                               }
                             ],
-                            "id": 1714,
+                            "id": 1740,
                             "name": "TupleExpression",
                             "src": "4872:25:7"
                           },
@@ -3867,7 +3867,7 @@
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "fromBlock",
-                                      "referencedDeclaration": 1474,
+                                      "referencedDeclaration": 1500,
                                       "type": "uint256"
                                     },
                                     "children": [
@@ -3887,11 +3887,11 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1705,
+                                              "referencedDeclaration": 1731,
                                               "type": "struct Trackable.Checkpoint storage ref[] storage pointer",
                                               "value": "checkpoints"
                                             },
-                                            "id": 1715,
+                                            "id": 1741,
                                             "name": "Identifier",
                                             "src": "4910:11:7"
                                           },
@@ -3928,16 +3928,16 @@
                                                       "overloadedDeclarations": [
                                                         null
                                                       ],
-                                                      "referencedDeclaration": 1705,
+                                                      "referencedDeclaration": 1731,
                                                       "type": "struct Trackable.Checkpoint storage ref[] storage pointer",
                                                       "value": "checkpoints"
                                                     },
-                                                    "id": 1716,
+                                                    "id": 1742,
                                                     "name": "Identifier",
                                                     "src": "4922:11:7"
                                                   }
                                                 ],
-                                                "id": 1717,
+                                                "id": 1743,
                                                 "name": "MemberAccess",
                                                 "src": "4922:18:7"
                                               },
@@ -3954,22 +3954,22 @@
                                                   "type": "int_const 1",
                                                   "value": "1"
                                                 },
-                                                "id": 1718,
+                                                "id": 1744,
                                                 "name": "Literal",
                                                 "src": "4942:1:7"
                                               }
                                             ],
-                                            "id": 1719,
+                                            "id": 1745,
                                             "name": "BinaryOperation",
                                             "src": "4922:21:7"
                                           }
                                         ],
-                                        "id": 1720,
+                                        "id": 1746,
                                         "name": "IndexAccess",
                                         "src": "4910:34:7"
                                       }
                                     ],
-                                    "id": 1721,
+                                    "id": 1747,
                                     "name": "MemberAccess",
                                     "src": "4910:44:7"
                                   },
@@ -3991,31 +3991,31 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1924,
+                                          "referencedDeclaration": 1950,
                                           "type": "block",
                                           "value": "block"
                                         },
-                                        "id": 1722,
+                                        "id": 1748,
                                         "name": "Identifier",
                                         "src": "4957:5:7"
                                       }
                                     ],
-                                    "id": 1723,
+                                    "id": 1749,
                                     "name": "MemberAccess",
                                     "src": "4957:12:7"
                                   }
                                 ],
-                                "id": 1724,
+                                "id": 1750,
                                 "name": "BinaryOperation",
                                 "src": "4910:59:7"
                               }
                             ],
-                            "id": 1725,
+                            "id": 1751,
                             "name": "TupleExpression",
                             "src": "4909:61:7"
                           }
                         ],
-                        "id": 1726,
+                        "id": 1752,
                         "name": "BinaryOperation",
                         "src": "4872:98:7"
                       },
@@ -4024,7 +4024,7 @@
                           {
                             "attributes": {
                               "assignments": [
-                                1728
+                                1754
                               ]
                             },
                             "children": [
@@ -4032,7 +4032,7 @@
                                 "attributes": {
                                   "constant": false,
                                   "name": "newCheckPoint",
-                                  "scope": 1773,
+                                  "scope": 1799,
                                   "stateVariable": false,
                                   "storageLocation": "storage",
                                   "type": "struct Trackable.Checkpoint storage pointer",
@@ -4044,15 +4044,15 @@
                                     "attributes": {
                                       "contractScope": null,
                                       "name": "Checkpoint",
-                                      "referencedDeclaration": 1477,
+                                      "referencedDeclaration": 1503,
                                       "type": "struct Trackable.Checkpoint storage pointer"
                                     },
-                                    "id": 1727,
+                                    "id": 1753,
                                     "name": "UserDefinedTypeName",
                                     "src": "4989:10:7"
                                   }
                                 ],
-                                "id": 1728,
+                                "id": 1754,
                                 "name": "VariableDeclaration",
                                 "src": "4989:32:7"
                               },
@@ -4072,11 +4072,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1705,
+                                      "referencedDeclaration": 1731,
                                       "type": "struct Trackable.Checkpoint storage ref[] storage pointer",
                                       "value": "checkpoints"
                                     },
-                                    "id": 1729,
+                                    "id": 1755,
                                     "name": "Identifier",
                                     "src": "5024:11:7"
                                   },
@@ -4110,31 +4110,31 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1705,
+                                              "referencedDeclaration": 1731,
                                               "type": "struct Trackable.Checkpoint storage ref[] storage pointer",
                                               "value": "checkpoints"
                                             },
-                                            "id": 1730,
+                                            "id": 1756,
                                             "name": "Identifier",
                                             "src": "5037:11:7"
                                           }
                                         ],
-                                        "id": 1731,
+                                        "id": 1757,
                                         "name": "MemberAccess",
                                         "src": "5037:18:7"
                                       }
                                     ],
-                                    "id": 1732,
+                                    "id": 1758,
                                     "name": "UnaryOperation",
                                     "src": "5037:20:7"
                                   }
                                 ],
-                                "id": 1733,
+                                "id": 1759,
                                 "name": "IndexAccess",
                                 "src": "5024:35:7"
                               }
                             ],
-                            "id": 1734,
+                            "id": 1760,
                             "name": "VariableDeclarationStatement",
                             "src": "4989:70:7"
                           },
@@ -4159,7 +4159,7 @@
                                       "isPure": false,
                                       "lValueRequested": true,
                                       "member_name": "fromBlock",
-                                      "referencedDeclaration": 1474,
+                                      "referencedDeclaration": 1500,
                                       "type": "uint256"
                                     },
                                     "children": [
@@ -4169,16 +4169,16 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1728,
+                                          "referencedDeclaration": 1754,
                                           "type": "struct Trackable.Checkpoint storage pointer",
                                           "value": "newCheckPoint"
                                         },
-                                        "id": 1735,
+                                        "id": 1761,
                                         "name": "Identifier",
                                         "src": "5076:13:7"
                                       }
                                     ],
-                                    "id": 1737,
+                                    "id": 1763,
                                     "name": "MemberAccess",
                                     "src": "5076:23:7"
                                   },
@@ -4212,7 +4212,7 @@
                                           "type": "type(uint256)",
                                           "value": "uint256"
                                         },
-                                        "id": 1738,
+                                        "id": 1764,
                                         "name": "ElementaryTypeNameExpression",
                                         "src": "5103:7:7"
                                       },
@@ -4234,31 +4234,31 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1924,
+                                              "referencedDeclaration": 1950,
                                               "type": "block",
                                               "value": "block"
                                             },
-                                            "id": 1739,
+                                            "id": 1765,
                                             "name": "Identifier",
                                             "src": "5111:5:7"
                                           }
                                         ],
-                                        "id": 1740,
+                                        "id": 1766,
                                         "name": "MemberAccess",
                                         "src": "5111:12:7"
                                       }
                                     ],
-                                    "id": 1741,
+                                    "id": 1767,
                                     "name": "FunctionCall",
                                     "src": "5103:21:7"
                                   }
                                 ],
-                                "id": 1742,
+                                "id": 1768,
                                 "name": "Assignment",
                                 "src": "5076:48:7"
                               }
                             ],
-                            "id": 1743,
+                            "id": 1769,
                             "name": "ExpressionStatement",
                             "src": "5076:48:7"
                           },
@@ -4283,7 +4283,7 @@
                                       "isPure": false,
                                       "lValueRequested": true,
                                       "member_name": "value",
-                                      "referencedDeclaration": 1476,
+                                      "referencedDeclaration": 1502,
                                       "type": "uint256"
                                     },
                                     "children": [
@@ -4293,16 +4293,16 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1728,
+                                          "referencedDeclaration": 1754,
                                           "type": "struct Trackable.Checkpoint storage pointer",
                                           "value": "newCheckPoint"
                                         },
-                                        "id": 1744,
+                                        "id": 1770,
                                         "name": "Identifier",
                                         "src": "5141:13:7"
                                       }
                                     ],
-                                    "id": 1746,
+                                    "id": 1772,
                                     "name": "MemberAccess",
                                     "src": "5141:19:7"
                                   },
@@ -4336,7 +4336,7 @@
                                           "type": "type(uint256)",
                                           "value": "uint256"
                                         },
-                                        "id": 1747,
+                                        "id": 1773,
                                         "name": "ElementaryTypeNameExpression",
                                         "src": "5163:7:7"
                                       },
@@ -4346,31 +4346,31 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1707,
+                                          "referencedDeclaration": 1733,
                                           "type": "uint256",
                                           "value": "_value"
                                         },
-                                        "id": 1748,
+                                        "id": 1774,
                                         "name": "Identifier",
                                         "src": "5171:6:7"
                                       }
                                     ],
-                                    "id": 1749,
+                                    "id": 1775,
                                     "name": "FunctionCall",
                                     "src": "5163:15:7"
                                   }
                                 ],
-                                "id": 1750,
+                                "id": 1776,
                                 "name": "Assignment",
                                 "src": "5141:37:7"
                               }
                             ],
-                            "id": 1751,
+                            "id": 1777,
                             "name": "ExpressionStatement",
                             "src": "5141:37:7"
                           }
                         ],
-                        "id": 1752,
+                        "id": 1778,
                         "name": "Block",
                         "src": "4972:220:7"
                       },
@@ -4379,7 +4379,7 @@
                           {
                             "attributes": {
                               "assignments": [
-                                1754
+                                1780
                               ]
                             },
                             "children": [
@@ -4387,7 +4387,7 @@
                                 "attributes": {
                                   "constant": false,
                                   "name": "oldCheckPoint",
-                                  "scope": 1773,
+                                  "scope": 1799,
                                   "stateVariable": false,
                                   "storageLocation": "storage",
                                   "type": "struct Trackable.Checkpoint storage pointer",
@@ -4399,15 +4399,15 @@
                                     "attributes": {
                                       "contractScope": null,
                                       "name": "Checkpoint",
-                                      "referencedDeclaration": 1477,
+                                      "referencedDeclaration": 1503,
                                       "type": "struct Trackable.Checkpoint storage pointer"
                                     },
-                                    "id": 1753,
+                                    "id": 1779,
                                     "name": "UserDefinedTypeName",
                                     "src": "5215:10:7"
                                   }
                                 ],
-                                "id": 1754,
+                                "id": 1780,
                                 "name": "VariableDeclaration",
                                 "src": "5215:32:7"
                               },
@@ -4427,11 +4427,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1705,
+                                      "referencedDeclaration": 1731,
                                       "type": "struct Trackable.Checkpoint storage ref[] storage pointer",
                                       "value": "checkpoints"
                                     },
-                                    "id": 1755,
+                                    "id": 1781,
                                     "name": "Identifier",
                                     "src": "5250:11:7"
                                   },
@@ -4468,16 +4468,16 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1705,
+                                              "referencedDeclaration": 1731,
                                               "type": "struct Trackable.Checkpoint storage ref[] storage pointer",
                                               "value": "checkpoints"
                                             },
-                                            "id": 1756,
+                                            "id": 1782,
                                             "name": "Identifier",
                                             "src": "5262:11:7"
                                           }
                                         ],
-                                        "id": 1757,
+                                        "id": 1783,
                                         "name": "MemberAccess",
                                         "src": "5262:18:7"
                                       },
@@ -4494,22 +4494,22 @@
                                           "type": "int_const 1",
                                           "value": "1"
                                         },
-                                        "id": 1758,
+                                        "id": 1784,
                                         "name": "Literal",
                                         "src": "5281:1:7"
                                       }
                                     ],
-                                    "id": 1759,
+                                    "id": 1785,
                                     "name": "BinaryOperation",
                                     "src": "5262:20:7"
                                   }
                                 ],
-                                "id": 1760,
+                                "id": 1786,
                                 "name": "IndexAccess",
                                 "src": "5250:33:7"
                               }
                             ],
-                            "id": 1761,
+                            "id": 1787,
                             "name": "VariableDeclarationStatement",
                             "src": "5215:68:7"
                           },
@@ -4534,7 +4534,7 @@
                                       "isPure": false,
                                       "lValueRequested": true,
                                       "member_name": "value",
-                                      "referencedDeclaration": 1476,
+                                      "referencedDeclaration": 1502,
                                       "type": "uint256"
                                     },
                                     "children": [
@@ -4544,16 +4544,16 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1754,
+                                          "referencedDeclaration": 1780,
                                           "type": "struct Trackable.Checkpoint storage pointer",
                                           "value": "oldCheckPoint"
                                         },
-                                        "id": 1762,
+                                        "id": 1788,
                                         "name": "Identifier",
                                         "src": "5300:13:7"
                                       }
                                     ],
-                                    "id": 1764,
+                                    "id": 1790,
                                     "name": "MemberAccess",
                                     "src": "5300:19:7"
                                   },
@@ -4587,7 +4587,7 @@
                                           "type": "type(uint256)",
                                           "value": "uint256"
                                         },
-                                        "id": 1765,
+                                        "id": 1791,
                                         "name": "ElementaryTypeNameExpression",
                                         "src": "5322:7:7"
                                       },
@@ -4597,64 +4597,64 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1707,
+                                          "referencedDeclaration": 1733,
                                           "type": "uint256",
                                           "value": "_value"
                                         },
-                                        "id": 1766,
+                                        "id": 1792,
                                         "name": "Identifier",
                                         "src": "5330:6:7"
                                       }
                                     ],
-                                    "id": 1767,
+                                    "id": 1793,
                                     "name": "FunctionCall",
                                     "src": "5322:15:7"
                                   }
                                 ],
-                                "id": 1768,
+                                "id": 1794,
                                 "name": "Assignment",
                                 "src": "5300:37:7"
                               }
                             ],
-                            "id": 1769,
+                            "id": 1795,
                             "name": "ExpressionStatement",
                             "src": "5300:37:7"
                           }
                         ],
-                        "id": 1770,
+                        "id": 1796,
                         "name": "Block",
                         "src": "5198:153:7"
                       }
                     ],
-                    "id": 1771,
+                    "id": 1797,
                     "name": "IfStatement",
                     "src": "4868:483:7"
                   }
                 ],
-                "id": 1772,
+                "id": 1798,
                 "name": "Block",
                 "src": "4858:499:7"
               }
             ],
-            "id": 1773,
+            "id": 1799,
             "name": "FunctionDefinition",
             "src": "4767:590:7"
           }
         ],
-        "id": 1774,
+        "id": 1800,
         "name": "ContractDefinition",
         "src": "60:5299:7"
       }
     ],
-    "id": 1775,
+    "id": 1801,
     "name": "SourceUnit",
     "src": "0:5360:7"
   },
   "compiler": {
     "name": "solc",
-    "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
+    "version": "0.4.19+commit.c4cbbb05.Emscripten.clang"
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-02-12T00:57:17.325Z"
+  "updatedAt": "2018-02-12T04:01:24.419Z"
 }
